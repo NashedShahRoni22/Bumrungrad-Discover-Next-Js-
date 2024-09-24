@@ -2,9 +2,9 @@ import SubPackDetails from "./subPackDetails";
 
 
 
-export async function generateStaticParams(params) {
+export async function generateStaticParams({params}) {
     const res = await fetch(
-        `https://api.discoverinternationalmedicalservice.com/api/get/sub-packages/${params.slug}`
+        `https://api.discoverinternationalmedicalservice.com/api/get/sub-packages/${params?.slug}`
     );
     const data = await res.json();
     return data?.response?.data?.map((item) => ({
@@ -12,10 +12,8 @@ export async function generateStaticParams(params) {
     }));
 }
 
-const ChildPackageDetails = ({ params }) => {
-    return <div>
-        <SubPackDetails params={params} />
-    </div>
+const ChildPackageDetailsPage = ({ params }) => {
+    return <SubPackDetails params={params} />
 };
 
-export default ChildPackageDetails;
+export default ChildPackageDetailsPage;

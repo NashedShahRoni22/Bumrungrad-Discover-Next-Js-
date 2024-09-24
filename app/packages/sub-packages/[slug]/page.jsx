@@ -1,9 +1,9 @@
 import ChildPackage from "./childPackage";
 
 
-export async function generateStaticParams(params) {
+export async function generateStaticParams({params}) {
   const res = await fetch(
-    `https://api.discoverinternationalmedicalservice.com/api/get/sub/packages/${params.slug}`
+    `https://api.discoverinternationalmedicalservice.com/api/get/sub/packages/${params?.slug}`
   );
   const data = await res.json();
   return data?.response?.data?.map((item) => ({
