@@ -1,36 +1,14 @@
-
-
 import News from "./news";
 
-export async function generateStaticParams({ params }) {
-  try {
-    const res = await fetch(
-      `https://api.discoverinternationalmedicalservice.com/api/get/news/${params?.id}`
-    );
+export async function generateStaticParams() {
+  const res = await fetch('https://api.discoverinternationalmedicalservice.com/api/get/news').then((res) => res.json());
 
-    // Handle non-OK response
-    if (!res.ok) {
-      throw new Error(`Failed to fetch data. Status: ${res.status}`);
-    }
+  if (!res?.data) return [];
 
-    const data = await res.json();
-    const newsData = data?.response?.data;
-
-    console.log("datas info", newsData);
-
-    // Ensure newsData is an array before mapping
-    if (Array.isArray(newsData)) {
-      return newsData.map((item) => ({
-        id: item?.id,
-      }));
-    } else {
-      console.error("newsData is not an array", newsData);
-      return []; // Return an empty array if the data isn't iterable
-    }
-  } catch (error) {
-    console.error("Error fetching data:", error);
-    return []; // Return an empty array in case of error
-  }
+  // Convert the id to a string
+  return res?.data?.map((item) => ({
+    id: item?.id?.toString(),
+  }));
 }
 
 const OneNewsPage = ({ params }) => {

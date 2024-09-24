@@ -2,9 +2,9 @@
 import Doctor from "./doctor";
 
 
-export async function generateStaticParams(params) {
+export async function generateStaticParams() {
   const res = await fetch(
-    `https://api.discoverinternationalmedicalservice.com/api/get/doctors/${params?.slug}`
+    `https://api.discoverinternationalmedicalservice.com/api/get/doctors`
   );
   const data = await res.json();
   return data?.response?.data?.map((item) => ({

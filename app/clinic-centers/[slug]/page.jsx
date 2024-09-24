@@ -1,9 +1,9 @@
 import React from 'react'
 import SingleCenter from './clinicalCenter'
 
-export async function generateStaticParams({params}) {
+export async function generateStaticParams() {
   const res = await fetch(
-    `https://api.discoverinternationalmedicalservice.com/api/get/centers/${params?.slug}`
+    `https://api.discoverinternationalmedicalservice.com/api/get/centers`
   );
   const data = await res.json();
   return data?.response?.data?.map((item) => ({
