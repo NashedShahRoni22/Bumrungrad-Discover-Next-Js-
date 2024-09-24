@@ -12,7 +12,6 @@ import { IoSearchOutline } from "react-icons/io5";
 import Lottie from "lottie-react";
 import notFoundAnim from "@/public/assets/anim/notfound.json";
 import Image from "next/image";
-import CardLoader from "@/components/ui/cardLoader";
 import { CardLoaders, ClinicCenterCardSkeleton } from "@/components/ui/cardload";
 export default function ViewAllCenters() {
   const [loader, setLoader] = useState(false);
