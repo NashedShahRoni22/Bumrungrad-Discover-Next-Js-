@@ -14,10 +14,10 @@ const Arrival = () => {
     const [loader, setLoader] = useState(false);
     const [errors, SetErrors] = useState(null);
     const [formData, setFormData] = useState({
-        "passport copy": "",
         "case summary": "",
         "admission date": "",
         "message": "",
+        "passport": "",
     });
 
        
@@ -57,7 +57,7 @@ const Arrival = () => {
                 });
     
                 setFormData({
-                    "passport copy": "",
+                    "passport": "",
                     "case summary": "",
                     "admission date": "",
                     message: "",
@@ -74,8 +74,8 @@ const Arrival = () => {
     };
     return (
         <div>
-            <div className='flex flex-col gap-3'>
-                <div>
+            <div className='flex flex-col gap-4'>
+                {/* <div>
                     <TextField
                         id='outlined-multiline-flexible'
                         label='Passport Copy'
@@ -91,7 +91,7 @@ const Arrival = () => {
                         }
                     />
                    
-                </div>
+                </div> */}
                 <div>
                     <TextField
                         id='outlined-multiline-flexible 1'
@@ -110,13 +110,17 @@ const Arrival = () => {
 
                 </div>
                 <div>
+                    <label htmlFor="datte">
+                         Date
+                    </label>
                     <TextField
                         id='outlined-multiline-flexible 2'
-                        label='Admission Date'
+                        // label='Admission Date'
                         value={formData["admission date"]}
                         placeholder='Admission Date'
                         fullWidth
                         required
+                        type="date"
                         onChange={(e) =>
                             setFormData({
                                 ...formData,
@@ -127,6 +131,9 @@ const Arrival = () => {
 
                 </div>
                 <div>
+                    {/* <label htmlFor="message">
+                        Message
+                    </label> */}
                     <TextField
                         id='outlined-multiline-flexible 3'
                         label='Message'
@@ -140,6 +147,27 @@ const Arrival = () => {
                             setFormData({
                                 ...formData,
                                 message: e.target.value,
+                            })
+                        }
+                    />
+
+                    
+                </div>
+                <div>
+                    <label htmlFor="document">
+                        Passport
+                    </label>
+                    <TextField
+                        id='outlined-multiline-flexible 3'
+                        // label='Document'
+                        value={formData["passport"]}
+                        placeholder='Document'
+                        fullWidth
+                        type="file"
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                passport: e.target.value,
                             })
                         }
                     />

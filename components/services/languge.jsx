@@ -2,7 +2,7 @@ import React from "react";
 
 const LangugeInterpreter = () => {
     return (
-        <div className='flex flex-col gap-2.5 px-5 py-8'>
+        <div className='flex flex-col gap-2.5 max-sm:p-2 px-5 py-8 max-sm:text-[12px] overflow-y-auto'>
             <h5>
                 Bumrungrad International Hospital understands the vital role
                 communication plays in patient care. To enhance the experience
@@ -11,7 +11,7 @@ const LangugeInterpreter = () => {
                 languages. Additional languages may be available upon special
                 request, depending on availability.
             </h5>
-            <ul className='grid md:grid-cols-2 list-disc'>
+            <ul className='grid md:grid-cols-2 list-disc max-sm:text-[12px]  max-sm:grid-cols-2'>
                 {languages.map((l, i) => (
                     <li key={i} className='ml-8'>
                         {l}
@@ -35,7 +35,7 @@ const LangugeInterpreter = () => {
                 Lobby), BI Clinic Building
             </p>
             <p>Services at Cultural Helpdesks:</p>
-            <ul className='list-disc'>
+            <ul className='list-disc max-sm:text-[12px] '>
                 {helpDeskServices.map((hds, i) => (
                     <li key={i} className='ml-8'>
                         {hds}

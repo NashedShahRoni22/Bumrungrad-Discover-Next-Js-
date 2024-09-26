@@ -37,6 +37,7 @@ export default function Register() {
     const [isVisible, setIsVisible] = useState(false);
     const [isVisible1, setIsVisible1] = useState(false);
     const [errors, SetErrors] = useState(null);
+    const [passport, setPassport] = useState("");
 
     const toggleVisibility = () => {
         setIsVisible(!isVisible);
@@ -65,6 +66,7 @@ export default function Register() {
             formData.append("phone", phone);
             formData.append("gender", gender);
             formData.append("citizenship", citizenship);
+            formData.append("passport", passport);
             if (yes) {
                 formData.append("country", "Thailand");
             } else {
@@ -225,6 +227,17 @@ export default function Register() {
                                 fullWidth
                                 type='date'
                                 onChange={(e) => setDob(e.target.value)}
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2.5'>
+                                Passport Copy(Optional)
+                            </p>
+                            <TextField
+                                fullWidth
+                                type='file'
+                                value={passport}
+                                onChange={(e) => setPassport(e.target.value)}
                             />
                         </div>
                     </div>

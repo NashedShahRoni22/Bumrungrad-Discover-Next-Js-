@@ -30,7 +30,7 @@ export const CardLoader = ({ cardLength, gridNumber, speed }) => {
 
 export const CardLoaders = ({ cardLength, gridNumber, speed, Component= SkeletonCard }) => {
   return (
-    <div className={`grid gap-5 md:grid-cols-3 xl:grid-cols-${gridNumber} lg:grid-cols-${gridNumber} my-10 max-sm:px-5`}>
+    <div className={`grid gap-5 md:grid-cols-3 xl:grid-cols-${gridNumber} lg:grid-cols-${gridNumber} my-10 max-sm:px-1`}>
       {[...Array(cardLength)].map((_, i) => (
         <div key={i}>
           <Component />
