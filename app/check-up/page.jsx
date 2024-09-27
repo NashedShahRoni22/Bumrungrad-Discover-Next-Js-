@@ -135,7 +135,7 @@ export default function CheckUp() {
                 phone,
                 nationality,
                 passport,
-                docFile
+                other_doc: docFile
             };
 
             // Append all fields to FormData
@@ -152,6 +152,7 @@ export default function CheckUp() {
             );
 
             const data = await response.json();
+            // console.log("🚀 ~ handaleDataSubmit ~ data:", data)
 
             if (data.status === 200) {
                 // toast.success("Check Up Request Placed");
@@ -463,7 +464,7 @@ export default function CheckUp() {
                                 <p className='mb-2.5'>Others Document</p>
                                 <TextField
                                     type='file'
-                                    placeholder='Enter Nationality'
+                                    // placeholder='Enter Nationality'
                                     
                                     fullWidth
                                     defaultValue={docFile}
