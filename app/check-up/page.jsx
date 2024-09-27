@@ -458,7 +458,7 @@ export default function CheckUp() {
                                     fullWidth
                                     defaultValue={passport}
                                     onChange={(e) =>
-                                        SetPassport(e.target.value)
+                                        SetPassport(e.target.files[0])
                                     }
                                 />
                             </div>
@@ -471,7 +471,7 @@ export default function CheckUp() {
                                     fullWidth
                                     defaultValue={docFile}
                                     onChange={(e) =>
-                                        setDocFile(e.target.value)
+                                        setDocFile(e.target.files[0])
                                     }
                                 />
                             </div>

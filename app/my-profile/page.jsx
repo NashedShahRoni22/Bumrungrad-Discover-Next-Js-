@@ -2,7 +2,9 @@
 
 import useAuth from "@/helpers/hooks/useAuth";
 import React, { useEffect, useState } from "react";
-import { TextField as InputField } from "@mui/material";
+import { TextField as InputField, MenuItem, Select } from "@mui/material";
+import Loader from "@/components/ui/loader";
+import {countries,natioNalities} from '@/public/data/country'
 
 export default function User() {
     const { auth, access_token } = useAuth();
@@ -14,10 +16,9 @@ export default function User() {
         firstName: "",
         lastName: "",
         phone: "",
-        city: "",
-        state: "",
-        zip: "",
+        citizenship: "",
         country: "",
+        dob: "",
     });
 
     const [initialData, setInitialData] = useState({});
@@ -59,7 +60,7 @@ export default function User() {
         try {
             setUpdateLoading(true);
             const response = await fetch(
-                "https://api.discoverinternationalmedicalservice.com/api/register",
+                `https://api.discoverinternationalmedicalservice.com/api/profile/update/${auth?.email}`,
                 {
                     method: "POST",
                     body: formData,
@@ -73,6 +74,10 @@ export default function User() {
                     "🚀 ~ file: page.jsx:User.handleSubmit ~ data:",
                     data,
                 );
+                // localStorage.setItem(
+                //     'User_Details',
+                //     JSON.stringify(data?.msg?.user_details)
+                //   )
             } else {
                 throw new Error("Failed to fetch data");
             }
@@ -165,13 +170,23 @@ export default function User() {
                                     Citizenship
                                 </span>
                             </label>
-                            <InputField
-                                fullWidth
-                                placeholder='Citizenship'
+                           
+                             <select 
+                                className="w-full border p-[14px] rounded border-[#D1D5DB]"
                                 name='citizenship'
-                                value={formData.citizenship}
+                                value={formData?.citizenship}
                                 onChange={handleChange}
-                            />
+                                >
+                                {natioNalities?.map((natioNality) => (
+                                    <option
+                                        key={natioNality}
+                                        value={natioNality}
+                                        
+                                    >
+                                        {natioNality}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         {/* Country Field */}
@@ -179,12 +194,21 @@ export default function User() {
                             <label htmlFor='country'>
                                 <span className='text-[#6B7280]'>Country</span>
                             </label>
-                            <InputField
-                                fullWidth
+                           
+                            <select className="w-full border p-[14px] rounded border-[#D1D5DB]"
                                 name='country'
                                 value={formData.country}
-                                onChange={handleChange}
-                            />
+                                onChange={handleChange}>
+                                {countries?.map((country) => (
+                                    <option
+                                        key={country}
+                                        value={country}
+                                        
+                                    >
+                                        {country}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
 
                         {/* Date of Birth Field */}
@@ -223,7 +247,11 @@ export default function User() {
 
                         {/* Phone Field */}
                         <div className='mb-4'>
+                        <label htmlFor='email'>
+                                <span className='text-[#6B7280]'>Phone</span>
+                            </label>
                             <InputField
+                                // label='Phone'
                                 fullWidth
                                 name='phone'
                                 type='tel'
@@ -235,14 +263,14 @@ export default function User() {
                         {/* Submit Button */}
                         <button
                             onClick={handleSubmit}
-                            className={`w-full py-2 rounded-md font-semibold transition duration-300 ${
+                            className={`w-full py-2 rounded-md font-semibold transition duration-300 flex justify-center items-center gap-2 ${
                                 isChanged
-                                    ? "bg-[#3B82F6] text-white hover:bg-[#3B82F6]/80"
+                                    ? "bg-blue text-white hover:bg-blue/80"
                                     : "bg-[#E5E7EB] text-[#6B7280] cursor-not-allowed"
                             }`}
-                            disabled={!isChanged}
+                            disabled={!isChanged || updateLoading}
                         >
-                            Save Changes
+                            Save Changes {updateLoading ? <Loader fill="white" stroke="white" className='w-5 h-5 animate-spin' /> : null}
                         </button>
                     </div>
                 )}
