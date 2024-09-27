@@ -59,14 +59,10 @@ export default function User() {
         try {
             setUpdateLoading(true);
             const response = await fetch(
-                `https://api.discoverinternationalmedicalservice.com/api/personal/profile/${auth?.id}`,
+                "https://api.discoverinternationalmedicalservice.com/api/register",
                 {
                     method: "POST",
-                    headers: {
-                        // Authorization: `Bearer ${access_token}`,
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
+                    body: formData,
                 },
             );
             setUpdateLoading(false);
@@ -135,7 +131,7 @@ export default function User() {
 
                         {/* Name Fields */}
                         <div className='mb-4 flex gap-2 mt-6'>
-                            <div>
+                            <div className="w-full">
                                 <label htmlFor='firstName'>
                                     <span className='text-[#6B7280]'>
                                         First Name
@@ -147,7 +143,7 @@ export default function User() {
                                     onChange={handleChange}
                                 />
                             </div>
-                            <div>
+                            <div className="w-full">
                                 <label htmlFor='lastName'>
                                     <span className='text-[#6B7280]'>
                                         Last Name
