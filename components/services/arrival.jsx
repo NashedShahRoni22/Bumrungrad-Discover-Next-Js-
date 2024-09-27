@@ -177,7 +177,7 @@ const Arrival = () => {
 
                 <button
                     type='button'
-                    disabled={loader || !formData["passport copy"] || !formData["case summary"] || !formData["admission date"]}
+                    disabled={loader  || !formData["case summary"] || !formData["admission date"]}
                     className={`btn_primary ${loader || !formData["message"] || !formData["passport copy"] || !formData["case summary"] || !formData["admission date"] ? "bg-white text-black border" : "bg-blue text-white"}`}
                     onClick={handleSubmit}
                 >
