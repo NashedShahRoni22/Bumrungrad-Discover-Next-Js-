@@ -7,7 +7,7 @@ import useAuth from "@/helpers/hooks/useAuth";
 import { sendEmails } from "@/helpers/mail/sendMail";
 import { admin_mails } from "@/constant";
 import toast from "react-hot-toast";
-import { comapanyMailBody, mailBody } from "@/helpers/mail/mailbody";
+import { comapanyMailBody } from "@/helpers/mail/mailbody";
 import { formatKeys } from "@/helpers/objectKeyFormat";
 import Loader from "@/components/ui/loader";
 
@@ -30,6 +30,8 @@ export default function CheckUp() {
     const [appoinMentDate, SetAppoinMentDate] = useState("");
     const [appoinMentTime, SetAppoinMentTime] = useState("");
     const [medicalConcern, SetMedicalConcern] = useState("");
+    const [passport, SetPassport] = useState("");
+    const [docFile,setDocFile] = useState('')
     const [HnNumber, SetHnNumber] = useState("");
     const [patientName, SetPatientName] = useState("");
     const [gender, setGender] = useState("");
@@ -37,7 +39,6 @@ export default function CheckUp() {
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
     const [nationality, setNationality] = useState("");
-    const [formDatas, setFormDatas] = useState(null);
 
     useEffect(() => {
         if (auth) {
@@ -133,6 +134,8 @@ export default function CheckUp() {
                 email,
                 phone,
                 nationality,
+                passport,
+                other_doc: docFile
             };
 
             // Append all fields to FormData
@@ -149,6 +152,7 @@ export default function CheckUp() {
             );
 
             const data = await response.json();
+            // console.log("🚀 ~ handaleDataSubmit ~ data:", data)
 
             if (data.status === 200) {
                 // toast.success("Check Up Request Placed");
@@ -443,6 +447,32 @@ export default function CheckUp() {
                                     }
                                 />
                             </div>
+                            <div className='mt-2.5 font-semibold'>
+                                <p className='mb-2.5'>Passport*</p>
+                                <TextField
+                                    type='file'
+                                    placeholder='Enter Nationality'
+                                    required
+                                    fullWidth
+                                    defaultValue={passport}
+                                    onChange={(e) =>
+                                        SetPassport(e.target.value)
+                                    }
+                                />
+                            </div>
+                            <div className='mt-2.5 font-semibold'>
+                                <p className='mb-2.5'>Others Document</p>
+                                <TextField
+                                    type='file'
+                                    // placeholder='Enter Nationality'
+                                    
+                                    fullWidth
+                                    defaultValue={docFile}
+                                    onChange={(e) =>
+                                        setDocFile(e.target.value)
+                                    }
+                                />
+                            </div>
                             <div>
                                 <div className='flex justify-center gap-5'>
                                     <button
@@ -464,7 +494,7 @@ export default function CheckUp() {
                                             gender === "" ||
                                             email === "" ||
                                             phone === "" ||
-                                            nationality === ""
+                                            nationality === "" 
                                                 ? "bg-white text-blue border"
                                                 : "bg-blue text-white "
                                         }`}
@@ -474,7 +504,8 @@ export default function CheckUp() {
                                             gender === "" ||
                                             email === "" ||
                                             phone === "" ||
-                                            nationality === ""
+                                            nationality === "" ||
+                                            passport === ""
                                         }
                                     >
                                         {loader ? <Loader stroke={'black'} color="black" className='animate-spin' /> : "Submit"}

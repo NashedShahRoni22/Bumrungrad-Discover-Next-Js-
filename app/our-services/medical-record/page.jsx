@@ -9,7 +9,6 @@ import { sendEmails } from "@/helpers/mail/sendMail";
 import { admin_mails } from "@/constant";
 import { comapanyMailBody } from "@/helpers/mail/mailbody";
 import Loader from "@/components/ui/loader";
-import { uploadToImgbb } from "@/helpers/fileUpload";
 import { formatKeys } from "@/helpers/objectKeyFormat";
 
 
@@ -114,7 +113,7 @@ const MedicalRecords = () => {
   },[userDetails])
   return (
     <>
-      <div className="md:my-10 container md:max-w-[600px] md:mx-auto lg:w-1/2  mx-5 shadow-xl rounded-xl p-5 md:p-10 ">
+      <div className="md:my-10 container mx-auto  md:max-w-[600px] md:mx-auto lg:w-1/2  lg:mx-5 shadow-xl rounded-xl p-5 md:p-10 ">
         <h1 className="text-center capitalize text-xl md:text-2xl lg:text-3xl font-bold text-blue">
           Medical Records
         </h1>
