@@ -15,6 +15,8 @@ import InsurancePartners from "./_comp/insurancePartners";
 import Faq from "./_comp/faq";
 import Packages from "@/components/packages/packages";
 import BookingModal from "@/components/services/main/bookingModal";
+import SpecificOffer from "./_comp/specificOffer";
+import BumrungradAccrediation from "./_comp/bumrungradAccrediation";
 
 export default function Home() {
   return (
@@ -31,16 +33,18 @@ export default function Home() {
         <MediExpress />
         <BookingModal />
         <ClinicCenters />
+        <SpecificOffer/>
         <RightHealthcare />
         {/* <HomePackages /> */}
         <Packages />
         <OnlineConsultation />
         <WhyUs />
+        <BumrungradAccrediation/>
         <Testimonial/>
         <News />
         <InsurancePartners/>
         <Faq/>
-        <HomeContact />
+        {/* <HomeContact /> */}
         <div className="fixed bottom-0 md:bottom-2 min-w-full z-50">
           <MiddleBar />
         </div>
