@@ -13,7 +13,7 @@ export default function ContactUs() {
       house: "House:02,Road: 07, Green Road",
       city: "Dhanmondi, Dhaka-1205",
       phone1: "+8801847284860",
-      phone2: "+8801324-418100",
+      phone2: "+8801324418100",
       map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3652.05224193445!2d90.3824876761062!3d23.745516388962468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b91b29851709%3A0xc3d50a2ecf8fad9a!2sBumrungrad%20Hospital%20Dhaka%20Office!5e0!3m2!1sen!2sbd!4v1692206329747!5m2!1sen!2sbd",
     },
     {

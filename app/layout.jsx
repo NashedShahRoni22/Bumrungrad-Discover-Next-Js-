@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Bumrungrad Int. Hospital Referral Office for Bangladeshi Patient",
-  description: "Bumrungrad Int. Hospital Referral Office for Bangladeshi Patient",
+  description: "Bumrungrad Hospital for International Patients - Provides comprehensive care in various specialties, including cardiology, oncology, orthopedics, neurosurgery, pediatrics, women's health, and cosmetic surgery.",
 };
 
 export default function RootLayout({ children }) {

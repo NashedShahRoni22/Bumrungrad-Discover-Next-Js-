@@ -31,14 +31,15 @@ export default function WhyUs() {
   return (
     <div className="mx-5 my-10 md:my-20 md:container md:mx-auto flex flex-col gap-5 md:gap-10">
       <h5 className="text-center text-2xl md:text-4xl font-semibold text-blue">
-        World-Class Care Awaits: <br /> Bumrungrad International Hospital Partnership
+        World-Class Care Awaits: <br /> Bumrungrad International Hospital
+        Partnership
       </h5>
-      <p className="text-center">
-        DMIS (Digital Medical Information Systems) has formed a strategic
+      <p className="text-center font-bold">
+        DMIS (discover international medical service ) has formed a strategic
         partnership with Bumrungrad International Hospital to bring world-class
-        healthcare services to Dhaka, Bangladesh. This collaboration aims to
-        provide patients in the region with access to advanced medical
-        expertise, cutting-edge technology, and personalized care.
+        healthcare services. This collaboration aims to provide patients in the
+        region with access to advanced medical expertise, cutting-edge
+        technology, and personalized care.
       </p>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.map((d, i) => (

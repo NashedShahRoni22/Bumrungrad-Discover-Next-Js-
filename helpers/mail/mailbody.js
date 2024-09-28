@@ -141,8 +141,9 @@ export const comapanyMailBody = (data, mail_title) => {
       <!-- Company Information Section -->
       <div class="company-info">
           <h3><strong> Bumrungrad International Hospital</strong></h3>
-          <p><strong>Phone:</strong> (+880) 1847284864</p>
-          <p><strong>Email:</strong> discover.bumrungrad@gmail.com</p>
+          <p><strong>Phone:</strong> (+880) 1324418100</p>
+          <p><strong>Phone:</strong> (+880) 1847284860</p>
+          <p><strong>Email:</strong> support@bumrungraddiscover.com</p>
       </div>
 
       <!-- Main Content Section -->
@@ -155,7 +156,7 @@ export const comapanyMailBody = (data, mail_title) => {
 
       <!-- Footer Section -->
       <div class="footer">
-          <p>If you have any questions or need further assistance, please don't hesitate to contact us at discover.bumrungrad@gmail.com.</p>
+          <p>If you have any questions or need further assistance, please don't hesitate to contact us at support@bumrungraddiscover.com.</p>
           <p>Thank you for choosing Bumrungrad International Hospital!</p>
          <div class="flex_container">
           <div class="company-info">
@@ -165,7 +166,7 @@ export const comapanyMailBody = (data, mail_title) => {
             <p>House:02,Road: 07, Green Road</p>
             <p>Dhanmondi, Dhaka-1205</p>
             <p>Phone: <a href="tel:+8801847284860"> +8801847284860 </a></p>
-            <p>Phone: <a href="tel:+8801324-418100">+8801324-418100</a></p>
+            <p>Phone: <a href="tel:+8801324-418100">+8801324418100</a></p>
         </div>
         <div class="company-info">
             <h4 class="font-bold">Uttara Office</h4>
@@ -282,8 +283,9 @@ export const userMailBody = (data, mail_title) => {
       <!-- Company Information Section -->
       <div class="company-info">
           <h3><strong> Bumrungrad International Hospital</strong></h3>
-          <p><strong>Phone:</strong> (+880) 1847284864</p>
-          <p><strong>Email:</strong> discover.bumrungrad@gmail.com</p>
+          <p><strong>Phone:</strong> (+880) 1324418100</p>
+          <p><strong>Phone:</strong> (+880) 1847284860</p>
+          <p><strong>Email:</strong> support@bumrungraddiscover.com</p>
       </div>
 
       <!-- Main Content Section -->
@@ -296,7 +298,7 @@ export const userMailBody = (data, mail_title) => {
 
       <!-- Footer Section -->
       <div class="footer">
-          <p>If you have any questions or need further assistance, please don't hesitate to contact us at discover.bumrungrad@gmail.com.</p>
+          <p>If you have any questions or need further assistance, please don't hesitate to contact us at support@bumrungraddiscover.com</p>
           <p>Thank you for choosing Bumrungrad International Hospital!</p>
          <div class="flex_container">
           <div class="company-info">
@@ -440,8 +442,9 @@ export const mailBodyMedicine = (data, mail_title) => {
       <!-- Company Information Section -->
       <div class="company-info">
           <h3><strong> Bumrungrad International Hospital</strong></h3>
-          <p><strong>Phone:</strong> (+880) 1847284864</p>
-          <p><strong>Email:</strong> discover.bumrungrad@gmail.com</p>
+          <p><strong>Phone:</strong> (+880) 1324418100</p>
+          <p><strong>Phone:</strong> (+880) 1847284860</p>
+          <p><strong>Email:</strong> support@bumrungraddiscover.com</p>
       </div>
 
       <!-- Main Content Section -->
@@ -460,7 +463,7 @@ export const mailBodyMedicine = (data, mail_title) => {
 
       <!-- Footer Section -->
       <div class="footer">
-          <p>If you have any questions or need further assistance, please don't hesitate to contact us at discover.bumrungrad@gmail.com.</p>
+          <p>If you have any questions or need further assistance, please don't hesitate to contact us at support@bumrungraddiscover.com</p>
           <p>Thank you for choosing Bumrungrad International Hospital!</p>
          <div class="flex_container">
           <div class="company-info">
@@ -470,7 +473,7 @@ export const mailBodyMedicine = (data, mail_title) => {
             <p>House:02,Road: 07, Green Road</p>
             <p>Dhanmondi, Dhaka-1205</p>
             <p>Phone: <a href="tel:+8801847284860"> +8801847284860 </a></p>
-            <p>Phone: <a href="tel:+8801324-418100">+8801324-418100</a></p>
+            <p>Phone: <a href="tel:+8801324418100">+8801324418100</a></p>
         </div>
         <div class="company-info">
             <h4 class="font-bold">Uttara Office</h4>

@@ -38,10 +38,9 @@ export default function OnlineConsultation() {
       <h5 className="text-xl md:text-2xl lg:text-3xl font-semibold text-blue">
         Schedule an online video consultation at Bumrungrad International Hospital
       </h5>
-      <p className="text-sm md:text-base">
-        Connect with world-class medical expertise from the comfort of your home.
-        Our telemedicine services bridge the gap, offering you top-tier care and
-        expert consultations without the need to travel.
+      <p className="text-sm md:text-base font-bold">
+        World-class medical care is just a click away. Consult Top doctors
+from home
       </p>
       <div className="grid gap-2.5 md:gap-5 md:grid-cols-2">
         {data.map((d, i) => (
