@@ -153,6 +153,8 @@ export default function CheckUp() {
 
             const data = await response.json();
             // console.log("🚀 ~ handaleDataSubmit ~ data:", data)
+            const _passport = data?.passport ? data?.passport : "No Passport File Provided";
+            const _other_doc = data?.other_doc ? data?.other_doc : "No Other File Provided";
 
             if (data.status === 200) {
                 // toast.success("Check Up Request Placed");
@@ -161,7 +163,7 @@ export default function CheckUp() {
                 const mailResponse = await sendEmails(
                     admin_mails,
                     "Check Up Request Placed",
-                    comapanyMailBody(formatKeys(fields), "Check Up Request Placed"),
+                    comapanyMailBody(formatKeys({...fields,passport: _passport, other_doc: _other_doc}), "Check Up Request Placed"),
                 );
                 setLoader(false);
 
@@ -169,7 +171,7 @@ export default function CheckUp() {
                 const clientMailResponse = await sendEmails(
                     fields.email,
                     "Check Up Request Placed",
-                    comapanyMailBody(formatKeys(fields), "Check Up Request Placed"),
+                    comapanyMailBody(formatKeys({...fields,passport: _passport, other_doc: _other_doc}), "Check Up Request Placed"),
                 );
                 setLoader(false);
 
@@ -456,7 +458,7 @@ export default function CheckUp() {
                                     fullWidth
                                     defaultValue={passport}
                                     onChange={(e) =>
-                                        SetPassport(e.target.value)
+                                        SetPassport(e.target.files[0])
                                     }
                                 />
                             </div>
@@ -469,7 +471,7 @@ export default function CheckUp() {
                                     fullWidth
                                     defaultValue={docFile}
                                     onChange={(e) =>
-                                        setDocFile(e.target.value)
+                                        setDocFile(e.target.files[0])
                                     }
                                 />
                             </div>

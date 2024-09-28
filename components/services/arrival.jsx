@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { admin_mails } from "@/constant";
 import useAuth from "@/helpers/hooks/useAuth";
@@ -16,21 +16,25 @@ const Arrival = () => {
     const [formData, setFormData] = useState({
         "case summary": "",
         "admission date": "",
-        "message": "",
-        "passport": "",
+        message: "",
+        passport: "",
     });
 
-       
     const handleSubmit = async () => {
         try {
-           
-
             setLoader(true);
             SetErrors(null);
             const response_admin = await sendEmails(
                 admin_mails,
                 `Admission on arrival - ${auth?.email}`,
-                comapanyMailBody({ name: `${auth?.firstName} ${auth?.lastName}`, email: auth?.email ,...formData},"Admission on arrival"),
+                comapanyMailBody(
+                    {
+                        name: `${auth?.firstName} ${auth?.lastName}`,
+                        email: auth?.email,
+                        ...formData,
+                    },
+                    "Admission on arrival",
+                ),
             );
             setLoader(false);
 
@@ -39,7 +43,14 @@ const Arrival = () => {
             const response_sender = await sendEmails(
                 auth?.email,
                 `Admission on arrival`,
-                comapanyMailBody({name: `${auth?.firstName} ${auth?.lastName}`, email: auth?.email ,...formData},"Admission on arrival"),
+                comapanyMailBody(
+                    {
+                        name: `${auth?.firstName} ${auth?.lastName}`,
+                        email: auth?.email,
+                        ...formData,
+                    },
+                    "Admission on arrival",
+                ),
             );
 
             setLoader(false);
@@ -55,22 +66,19 @@ const Arrival = () => {
                     duration: 3000,
                     icon: "👌👌",
                 });
-    
+
                 setFormData({
-                    "passport": "",
+                    passport: "",
                     "case summary": "",
                     "admission date": "",
                     message: "",
                 });
-    
+
                 window.location.reload();
             } else {
                 toast.error("Submission failed");
             }
-
-           
-        } catch (error) {
-        }
+        } catch (error) {}
     };
     return (
         <div>
@@ -107,12 +115,9 @@ const Arrival = () => {
                             })
                         }
                     />
-
                 </div>
                 <div>
-                    <label htmlFor="datte">
-                         Date
-                    </label>
+                    <label htmlFor='datte'>Date</label>
                     <TextField
                         id='outlined-multiline-flexible 2'
                         // label='Admission Date'
@@ -120,7 +125,7 @@ const Arrival = () => {
                         placeholder='Admission Date'
                         fullWidth
                         required
-                        type="date"
+                        type='date'
                         onChange={(e) =>
                             setFormData({
                                 ...formData,
@@ -128,12 +133,27 @@ const Arrival = () => {
                             })
                         }
                     />
-
                 </div>
+
                 <div>
-                    {/* <label htmlFor="message">
-                        Message
-                    </label> */}
+                    <label htmlFor='document'>Passport</label>
+                    <TextField
+                        id='outlined-multiline-flexible 3'
+                        // label='Document'
+                        value={formData["passport"]}
+                        placeholder='Document'
+                        fullWidth
+                        type='file'
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                passport: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+
+                <div>
                     <TextField
                         id='outlined-multiline-flexible 3'
                         label='Message'
@@ -150,38 +170,35 @@ const Arrival = () => {
                             })
                         }
                     />
-
-                    
-                </div>
-                <div>
-                    <label htmlFor="document">
-                        Passport
-                    </label>
-                    <TextField
-                        id='outlined-multiline-flexible 3'
-                        // label='Document'
-                        value={formData["passport"]}
-                        placeholder='Document'
-                        fullWidth
-                        type="file"
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                passport: e.target.value,
-                            })
-                        }
-                    />
-
-                    
                 </div>
 
                 <button
                     type='button'
-                    disabled={loader  || !formData["case summary"] || !formData["admission date"]}
-                    className={`btn_primary ${loader || !formData["message"] || !formData["passport copy"] || !formData["case summary"] || !formData["admission date"] ? "bg-white text-black border" : "bg-blue text-white"}`}
+                    disabled={
+                        loader ||
+                        !formData["case summary"] ||
+                        !formData["admission date"]
+                    }
+                    className={`btn_primary ${
+                        loader ||
+                        !formData["message"] ||
+                        !formData["passport copy"] ||
+                        !formData["case summary"] ||
+                        !formData["admission date"]
+                            ? "bg-white text-black border"
+                            : "bg-blue text-white"
+                    }`}
                     onClick={handleSubmit}
                 >
-                    {loader ? <Loader className='animate-spin' fill='black' stroke='black' /> : "Submit"}
+                    {loader ? (
+                        <Loader
+                            className='animate-spin'
+                            fill='black'
+                            stroke='black'
+                        />
+                    ) : (
+                        "Submit"
+                    )}
                 </button>
             </div>
         </div>
