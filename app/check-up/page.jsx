@@ -346,6 +346,7 @@ export default function CheckUp() {
                                 <div className='flex justify-center'>
                                     <button
                                         className={`mt-5 px-4 py-2 rounded font-semibold bg-transparent border border-blue ${
+                                            
                                             appoinMentDate === "" ||
                                             appoinMentTime === "" ||
                                             healtePackage === ""
@@ -490,13 +491,14 @@ export default function CheckUp() {
 
                                     <button
                                         onClick={handaleDataSubmit}
-                                        className={`mt-5  bg-transparent py-2 justify-center flex items-center border border-blue text-white rounded w-[150px]  hover:bg-white hover:text-blue font-semibold duration-300 ease-linear ${
+                                        className={`btn_primary ${
                                            loader ||
                                             patientName === "" ||
                                             gender === "" ||
                                             email === "" ||
                                             phone === "" ||
-                                            nationality === "" 
+                                            nationality === "" ||
+                                            passport === ""
                                                 ? "bg-white text-blue border"
                                                 : "bg-blue text-white "
                                         }`}

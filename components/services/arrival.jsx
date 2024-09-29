@@ -117,6 +117,24 @@ const Arrival = () => {
                     />
                 </div>
                 <div>
+                    <TextField
+                        id='outlined-multiline-flexible 3'
+                        label='Message'
+                        value={formData["message"]}
+                        placeholder='Message'
+                        fullWidth
+                        multiline
+                        rows={4}
+                        required
+                        onChange={(e) =>
+                            setFormData({
+                                ...formData,
+                                message: e.target.value,
+                            })
+                        }
+                    />
+                </div>
+                <div>
                     <label htmlFor='datte'>Date</label>
                     <TextField
                         id='outlined-multiline-flexible 2'
@@ -153,24 +171,7 @@ const Arrival = () => {
                     />
                 </div>
 
-                <div>
-                    <TextField
-                        id='outlined-multiline-flexible 3'
-                        label='Message'
-                        value={formData["message"]}
-                        placeholder='Message'
-                        fullWidth
-                        multiline
-                        rows={4}
-                        required
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                message: e.target.value,
-                            })
-                        }
-                    />
-                </div>
+              
 
                 <button
                     type='button'
