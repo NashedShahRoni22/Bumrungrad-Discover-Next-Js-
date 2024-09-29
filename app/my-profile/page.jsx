@@ -5,8 +5,11 @@ import React, { useEffect, useState } from "react";
 import { TextField as InputField, MenuItem, Select } from "@mui/material";
 import Loader from "@/components/ui/loader";
 import {countries,natioNalities} from '@/public/data/country'
+import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function User() {
+    const router = useRouter()
     const { auth, access_token } = useAuth();
     const [loading, setLoading] = useState(true); // State to track loading
     const [error, setError] = useState(null);
@@ -57,27 +60,48 @@ export default function User() {
     }, [formData, initialData]);
 
     const handleSubmit = async () => {
+        const _formData = new FormData();
+
+        const fields = {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            phone: formData.phone,
+            citizenship: formData.citizenship,
+            country: formData.country,
+            dob: formData.dob,
+        };
+        
+           Object.entries(fields).forEach(([key, value]) => _formData.append(key, value));
         try {
+
             setUpdateLoading(true);
             const response = await fetch(
-                `https://api.discoverinternationalmedicalservice.com/api/profile/update/${auth?.email}`,
+                `https://api.discoverinternationalmedicalservice.com/api/profile-update/${auth?.id}`,
                 {
                     method: "POST",
-                    body: formData,
+                    body: _formData,
                 },
             );
             setUpdateLoading(false);
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(
-                    "🚀 ~ file: page.jsx:User.handleSubmit ~ data:",
-                    data,
-                );
-                // localStorage.setItem(
-                //     'User_Details',
-                //     JSON.stringify(data?.msg?.user_details)
-                //   )
+               
+                localStorage.setItem(
+                    'User_Details',
+                    JSON.stringify(data?.data)
+                  )
+
+                toast.success("Profile updated successfully", {
+                    position: "top-center",
+                    duration: 4000,
+                    style: {
+                        color: "green",
+                    },
+                });
+                // setInitialData(formData);
+                setIsChanged(false);
+                router.refresh()
             } else {
                 throw new Error("Failed to fetch data");
             }
@@ -145,7 +169,7 @@ export default function User() {
                                 <InputField
                                     fullWidth
                                     value={formData.firstName}
-                                    onChange={handleChange}
+                                    onChange={(e)=>setFormData((prev)=>({...prev,firstName:e.target.value}))}
                                 />
                             </div>
                             <div className="w-full">
@@ -158,7 +182,7 @@ export default function User() {
                                     fullWidth
                                     name='lastName'
                                     value={formData.lastName}
-                                    onChange={handleChange}
+                                    onChange={(e)=>setFormData((prev)=>({...prev,lastName:e.target.value}))}
                                 />
                             </div>
                         </div>
@@ -175,7 +199,7 @@ export default function User() {
                                 className="w-full border p-[14px] rounded border-[#D1D5DB]"
                                 name='citizenship'
                                 value={formData?.citizenship}
-                                onChange={handleChange}
+                                onChange={(e)=>setFormData((prev)=>({...prev,citizenship:e.target.value}))}
                                 >
                                 {natioNalities?.map((natioNality) => (
                                     <option
@@ -198,7 +222,7 @@ export default function User() {
                             <select className="w-full border p-[14px] rounded border-[#D1D5DB]"
                                 name='country'
                                 value={formData.country}
-                                onChange={handleChange}>
+                                onChange={(e)=>setFormData((prev)=>({...prev,country:e.target.value}))}>
                                 {countries?.map((country) => (
                                     <option
                                         key={country}
@@ -223,7 +247,7 @@ export default function User() {
                                 name='dob'
                                 type='date'
                                 value={formData.dob}
-                                onChange={handleChange}
+                                onChange={(e)=>setFormData((prev)=>({...prev,dob:e.target.value}))}
                                 InputLabelProps={{
                                     shrink: true,
                                 }} // This will prevent the label from overlapping with the date picker
@@ -256,7 +280,7 @@ export default function User() {
                                 name='phone'
                                 type='tel'
                                 value={formData.phone}
-                                onChange={handleChange}
+                                onChange={(e)=>setFormData((prev)=>({...prev,phone:e.target.value}))}
                             />
                         </div>
 

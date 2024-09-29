@@ -10,34 +10,45 @@ export default function MediExpress() {
       <div className="flex flex-col gap-2.5 md:gap-5 ">
         <h2 className="text-xl md:text-2xl font-semibold text-blue">
           {" "}
-          Know More About Us - DIMS
+          Know More About Us
         </h2>
 
-        <p className="font-semibold">Who We Are?</p>
+        {/* <p className="font-semibold">Who We Are?</p> */}
         <p className="text-justify">
-          DIMS is your trusted partner for truly seamless healthcare at
-          Bumrungrad International Hospital. As the official representative and
-          international referral office in Dhaka, Bangladesh, we have proudly
-          facilitated access to world-class medical care for patients from
-          Bangladesh for years. Our dedicated team ensures that your healthcare
-          journey is effortless, from initial consultations to specialized
-          treatments and post-care follow-up. With a deep understanding of both
-          local needs and international healthcare standards, DIMS bridges the
-          gap between patients in Bangladesh and the renowned expertise of
-          Bumrungrad International Hospital.
+          DIMS (Discover International Medical Service) is a trusted name in
+          providing seamless medical assistance and facilitation services to
+          individuals seeking world-class healthcare solutions abroad. Our
+          mission is to guide patients through the complexities of medical
+          travel, ensuring access to the best hospitals and doctors across the
+          globe. With our extensive network of medical partners, we specialize
+          in coordinating treatments, consultations, and aftercare for a wide
+          range of medical conditions.
         </p>
-        <p className="font-semibold">How do we work?</p>
+        {/* <p className="font-semibold">How do we work?</p> */}
         <p className="text-justify">
-          At DIMS, we simplify your healthcare journey, ensuring it is smooth
-          and stress-free. Our process begins with a personalized
-          consultation—whether by phone, email, or in-person at our Bumrungrad
-          hospital Dhaka office—to understand your specific needs. From there,
-          we manage all aspects of your medical trip, including appointment
-          scheduling at Bumrungrad International Hospital, as well as
-          coordinating flights, accommodation, and transportation. Once in
-          Thailand, we provide full support throughout the hospital process and
-          assist with follow-up care. With DIMS, you can focus on your health
-          while we handle every detail with precision and care.
+          Our services include detailed medical consultation planning,
+          appointment scheduling, and visa assistance, making the entire process
+          stress-free and efficient. We also offer personalized care by staying
+          in close communication with our patients throughout their medical
+          journey.
+        </p>
+        <p className="text-justify">
+          In collaboration with leading hospitals such as Bumrungrad
+          International, we ensure that patients receive the highest standard of
+          healthcare. With international referral offices in{" "}
+          <strong>
+            Bahrain, Bangladesh, Cambodia, Chad, China, East Africa, Ethiopia,
+            Hong Kong, Indonesia, Kenya, Kuwait, Laos, Mongolia, Myanmar, Nepal,
+            Pakistan, UAE, and Vietnam—{" "}
+          </strong>{" "}
+          we make it convenient for patients worldwide to access the right
+          medical expertise.
+        </p>
+        <p className="text-justify">
+          At DIMS, we are committed to helping you achieve better health
+          outcomes through professional, reliable, and compassionate support.
+          Let us be your partner in health and well-being, ensuring you receive
+          the best care, no matter where you are.
         </p>
       </div>
       <div className="w-full">
