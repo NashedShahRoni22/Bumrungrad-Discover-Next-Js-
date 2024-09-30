@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Bumrungrad Int. Hospital Referral Office for Bangladeshi Patient",
+  title: "Bumrungrad Hospital for International Patient",
   description: "Bumrungrad Hospital for International Patients - Provides comprehensive care in various specialties, including cardiology, oncology, orthopedics, neurosurgery, pediatrics, women's health, and cosmetic surgery.",
 };
 

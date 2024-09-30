@@ -69,15 +69,11 @@ const MedicalRecords = () => {
         setLoader(false);
 
         if (send_admin_mails.messageId && send_client_mails.messageId) {
-          toast.success(
-          "Medical record request sent",{
+          toast.success("We have received your request. Our representative will reach you shortly!", {
             position: "top-center",
-            duration: 4000,
-            style: {
-              color: "green",
-            },
-          }
-        );
+            style: { borderRadius: "20px" },
+            duration: 5000,
+          });
         form.reset();
          navigate.push("/");
         setLoader(false);

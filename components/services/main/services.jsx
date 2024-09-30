@@ -62,9 +62,9 @@ const handleClick = (s, i, id) => {
             Our Services
           </h2>
         ) : (
-          <h2 className="capitalize text-xl md:text-2xl lg:text-3xl font-bold text-blue">
-        Our Complete Services for Bangladeshi Patients <br /> at Bumrungrad
-        International Hospital
+          <h2 className="capitalize text-xl md:text-2xl lg:text-3xl font-bold text-blue text-center">
+        Our Complete Services for Patients at
+        Bumrungrad International Hospital
       </h2>
         )
       }

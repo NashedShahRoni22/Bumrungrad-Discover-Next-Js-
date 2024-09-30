@@ -50,7 +50,6 @@ const customStyles = {
 
 export default function Appointment() {
   const { auth } = useAuth();
-  const userDetails = auth;
   let doctor1, speacility1;
   if (typeof window !== "undefined") {
     doctor1 = JSON.parse(localStorage.getItem("doctor_name"));
@@ -110,7 +109,6 @@ export default function Appointment() {
   const [shift2, setShift2] = React.useState("");
   const [firstSiftTime, setFirstShiftTime] = React.useState("");
   const [SecondSiftTime, setSecondSiftTime] = React.useState("");
-  const [formDatas, setFormDatas] = React.useState(null);
 
   const [hnNumber, setHnNumber] = React.useState("");
   const [firstname, setfirstname] = React.useState("");
@@ -132,21 +130,21 @@ export default function Appointment() {
   const [relation, setRelation] = React.useState("");
 
   useEffect(() => {
-    if (userDetails) {
-      setfirstname(userDetails?.firstName || "");
-      setLastName(userDetails?.lastName || "");
-      setDob(userDetails?.dob || "");
-      setPataientEmail(userDetails?.email || "");
-      setPhone(userDetails?.phone || "");
-      setGender(userDetails?.gender || "");
-      setCitizenship(userDetails?.citizenship || "");
-      setCountry(userDetails?.country || "");
-      setRequestorFirstname(userDetails?.firstName || "");
-      setRequestorLastName(userDetails?.lastName || "");
-      setRequestorEmail(userDetails?.email || "");
-      setPhone2(userDetails?.phone || "");
+    if (auth) {
+      setfirstname(auth?.firstName || "");
+      setLastName(auth?.lastName || "");
+      setDob(auth?.dob || "");
+      setPataientEmail(auth?.email || "");
+      setPhone(auth?.phone || "");
+      setGender(auth?.gender || "");
+      setCitizenship(auth?.citizenship || "");
+      setCountry(auth?.country || "");
+      setRequestorFirstname(auth?.firstName || "");
+      setRequestorLastName(auth?.lastName || "");
+      setRequestorEmail(auth?.email || "");
+      setPhone2(auth?.phone || "");
     }
-  }, [userDetails]);
+  }, [auth]);
   const [passport, setPassport] = React.useState("");
   const [medicalReport1, setmedicalReport1] = React.useState("");
   const [medicalReport2, setmedicalReport2] = React.useState("");
@@ -229,10 +227,9 @@ export default function Appointment() {
       setLoader(true);
 
       const formData = new FormData();
-      const { id: userId } = userDetails || {};
 
       const fields = {
-        user_id: userId,
+        user_id: auth?.id,
         specialty,
         doctor,
         subSpecialty,
@@ -267,10 +264,7 @@ export default function Appointment() {
       };
 
       // Append all fields to FormData
-      Object.entries(fields).forEach(([key, value]) => {
-        formData.append(key, value);
-        setFormDatas((prev) => ({ ...prev, [key]: value }));
-      });
+      Object.entries(fields).forEach(([key, value]) =>  formData.append(key, value));
 
       // Send API request
       const apiResponse = await fetch(
@@ -280,8 +274,10 @@ export default function Appointment() {
           body: formData,
         }
       );
+      setLoader(false);
 
       const data = await apiResponse.json();
+   
 
       if (data.status === 200) {
         // toast.success("Please check your email or spam box!");
@@ -289,17 +285,18 @@ export default function Appointment() {
         localStorage.removeItem("Doctor_specialty");
         // setLoader(false);
       } else {
-        throw new Error("Failed to book appointment");
+       toast.error("Failed to book appointment");
+       return
       }
 
       // upload image
       setLoader(true);
-      const uploadImage = passport ? data?.passport : "link not provided";
-      const uploadImage2 = medicalReport1
+      const uploadImage = data?.passport ? data?.passport : "link not provided";
+      const uploadImage2 =  data?.medicalReport1
         ? data?.medicalReport1
         : "link not provided";
-      const uploadImage3 = medicalReport2
-        ? data?.medicalReport1
+      const uploadImage3 = data?.medicalReport2
+        ? data?.medicalReport2
         : "link not provided";
       setLoader(false);
       // Send email
@@ -343,7 +340,7 @@ export default function Appointment() {
       setLoader(false);
 
       if (emailResponse.messageId && responseClient.messageId) {
-        toast.success("Book Appointment successfully, Mail has been sent", {
+        toast.success("We have received your request. Our representative will reach you shortly!", {
           position: "top-center",
           style: { borderRadius: "20px" },
           duration: 5000,
@@ -1364,7 +1361,7 @@ export default function Appointment() {
                       <button
                         disabled={loader}
                         onClick={handlePreviewClosePreview}
-                        className="mt-4 ml-2 px-4 py-2 bg-red border border-red text-white rounded-md hover:bg-white hover:text-red font-semibold duration-300 ease-linear"
+                        className="mt-6 ml-2 px-4 py-2 bg-red border border-red text-white rounded-md hover:bg-white hover:text-red font-semibold duration-300 ease-linear"
                       >
                         Close
                       </button>

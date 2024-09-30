@@ -38,11 +38,11 @@ export default function ContactForm() {
 
             setLoading(false);
             if (response.success == true && sendClientMail.success == true) {
-                toast.success("Email sent successfully 👌👌", {
+                toast.success("We have received your request. Our representative will reach you shortly!", {
                     position: "top-center",
-                    style: { padding: "16px", color: "green", border: "1px solid green" },
-                    duration: 3000,
-                });
+                    style: { borderRadius: "20px" },
+                    duration: 5000,
+                  });
                 setFormData({
                     name: "",
                     email: "",

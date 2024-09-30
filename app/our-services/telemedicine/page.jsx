@@ -13,8 +13,6 @@ import { formatKeys } from "@/helpers/objectKeyFormat";
 
 const TeleMedicine = () => {
     const { auth } = useAuth();
-
-    //loader
     const [loader, setLoader] = useState();
     const navigate = useRouter();
 
@@ -83,9 +81,7 @@ const TeleMedicine = () => {
 
         if (jsonresponse.status === 200) {
             setLoader(false);
-            // toast.success(
-            //     "Tele Medicine request sent! Our support team will contact you soon.",
-            // );
+
             const doc_ment = jsonresponse?.investigationDocument
                 ? jsonresponse?.investigationDocument
                 : "link are not found";
@@ -109,9 +105,16 @@ const TeleMedicine = () => {
             setLoader(false);
 
             if (send_mail_on_admin?.messageId && send_client_email?.messageId) {
-                toast.success("Tele Medicine request sent! Our support team will contact you soon.");
-                form.reset()
-                navigate.push('/')
+                toast.success(
+                    "We have received your request. Our representative will reach you shortly!",
+                    {
+                        position: "top-center",
+                        style: { borderRadius: "20px" },
+                        duration: 5000,
+                    },
+                );
+                form.reset();
+                navigate.push("/");
             }
         } else {
             toast.error("Something went wrong");
@@ -133,184 +136,194 @@ const TeleMedicine = () => {
                         *Patient Details
                     </h2>
                     <Divider className='my-2.5' />
-                   <section className="grid md:grid-cols-2 gap-2.5">
-                   <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Enter Full Name
-                        </p>
-                        <TextField
-                            type='text'
-                            value={fullName}
-                            placeholder='Same As In Passport'
-                            onChange={(e) => setFullName(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Hospital No.(HN)
-                        </p>
-                        <TextField
-                            placeholder='Old Patient'
-                            onChange={(e) => setHnNum(e.target.value)}
-                            fullWidth
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Date of Birth
-                        </p>
-                        <TextField
-                            type='date'
-                            value={birthDate}
-                            onChange={(e) => setBirthDate(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Passport / Id No
-                        </p>
-                        <TextField
-                            type=''
-                            placeholder='Enter Passport Number'
-                            onChange={(e) => setPassportId(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Nationality
-                        </p>
-                        <TextField
-                            placeholder='Enter Your Nationality'
-                            onChange={(e) => setNationality(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Country of Residence
-                        </p>
-                        <TextField
-                            placeholder='Enter Your Residence'
-                            onChange={(e) => setResidence(e.target.value)}
-                            fullWidth
-                            required
-                            value={residence}
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Contact Details of Patient
-                        </p>
-                        <TextField
-                            placeholder='Mobile Number / Email Address'
-                            onChange={(e) => setContactDetails(e.target.value)}
-                            fullWidth
-                            required
-                            value={contactDetails}
-                        />
-                    </div>
-                   </section>
+                    <section className='grid md:grid-cols-2 gap-2.5'>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Enter Full Name
+                            </p>
+                            <TextField
+                                type='text'
+                                value={fullName}
+                                placeholder='Same As In Passport'
+                                onChange={(e) => setFullName(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Hospital No.(HN)
+                            </p>
+                            <TextField
+                                placeholder='Old Patient'
+                                onChange={(e) => setHnNum(e.target.value)}
+                                fullWidth
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Date of Birth
+                            </p>
+                            <TextField
+                                type='date'
+                                value={birthDate}
+                                onChange={(e) => setBirthDate(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Passport / Id No
+                            </p>
+                            <TextField
+                                type=''
+                                placeholder='Enter Passport Number'
+                                onChange={(e) => setPassportId(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Nationality
+                            </p>
+                            <TextField
+                                placeholder='Enter Your Nationality'
+                                onChange={(e) => setNationality(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Country of Residence
+                            </p>
+                            <TextField
+                                placeholder='Enter Your Residence'
+                                onChange={(e) => setResidence(e.target.value)}
+                                fullWidth
+                                required
+                                value={residence}
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Contact Details of Patient
+                            </p>
+                            <TextField
+                                placeholder='Mobile Number / Email Address'
+                                onChange={(e) =>
+                                    setContactDetails(e.target.value)
+                                }
+                                fullWidth
+                                required
+                                value={contactDetails}
+                            />
+                        </div>
+                    </section>
                     <h1 className='uppercase font-semibold text-blue mt-5 mb-2.5 md:mt-10'>
                         *appointment details
                     </h1>
                     <Divider className='my-2.5' />
-                    <section className="grid md:grid-cols-2 gap-2.5">
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Preferred Appoinment Date
-                        </p>
-                        <TextField
-                            type='date'
-                            onChange={(e) => setPreferredDate(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Preferred Doctor
-                        </p>
-                        <TextField
-                            placeholder='Doctor Name'
-                            onChange={(e) => setPreferredDoctor(e.target.value)}
-                            fullWidth
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Purpose of Appoinment
-                        </p>
-                        <TextField
-                            placeholder='Chief Complaint'
-                            onChange={(e) =>
-                                setPurposeAppoinment(e.target.value)
-                            }
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            {" "}
-                            Availlable Investigation Document
-                        </p>
-                        <TextField
-                            type='file'
-                            onChange={(e) =>
-                                setInvestigationDocument(e.target.files[0])
-                            }
-                            fullWidth
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Request for Interpreter
-                        </p>
-                        <TextField
-                            placeholder='Specify The Language'
-                            onChange={(e) => setInterpreter(e.target.value)}
-                            fullWidth
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Payment Type
-                        </p>
-                        <TextField
-                            placeholder='E-Payment / Credit card / Bank transfer'
-                            onChange={(e) => setPaymentType(e.target.value)}
-                            fullWidth
-                            required
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Email for E-payment Link
-                        </p>
-                        <TextField
-                            type='email'
-                            placeholder='Enter Email'
-                            onChange={(e) => setEpaymentlink(e.target.value)}
-                            fullWidth
-                        />
-                    </div>
-                    <div>
-                        <p className='mb-2 font-semibold text-sm'>
-                            Specific Concern
-                        </p>
-                        <TextField
-                            placeholder='Interest'
-                            onChange={(e) => setSpecificConcern(e.target.value)}
-                            fullWidth
-                        />
-                    </div>
+                    <section className='grid md:grid-cols-2 gap-2.5'>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Preferred Appoinment Date
+                            </p>
+                            <TextField
+                                type='date'
+                                onChange={(e) =>
+                                    setPreferredDate(e.target.value)
+                                }
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Preferred Doctor
+                            </p>
+                            <TextField
+                                placeholder='Doctor Name'
+                                onChange={(e) =>
+                                    setPreferredDoctor(e.target.value)
+                                }
+                                fullWidth
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Purpose of Appoinment
+                            </p>
+                            <TextField
+                                placeholder='Chief Complaint'
+                                onChange={(e) =>
+                                    setPurposeAppoinment(e.target.value)
+                                }
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                {" "}
+                                Availlable Investigation Document
+                            </p>
+                            <TextField
+                                type='file'
+                                onChange={(e) =>
+                                    setInvestigationDocument(e.target.files[0])
+                                }
+                                fullWidth
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Request for Interpreter
+                            </p>
+                            <TextField
+                                placeholder='Specify The Language'
+                                onChange={(e) => setInterpreter(e.target.value)}
+                                fullWidth
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Payment Type
+                            </p>
+                            <TextField
+                                placeholder='E-Payment / Credit card / Bank transfer'
+                                onChange={(e) => setPaymentType(e.target.value)}
+                                fullWidth
+                                required
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Email for E-payment Link
+                            </p>
+                            <TextField
+                                type='email'
+                                placeholder='Enter Email'
+                                onChange={(e) =>
+                                    setEpaymentlink(e.target.value)
+                                }
+                                fullWidth
+                            />
+                        </div>
+                        <div>
+                            <p className='mb-2 font-semibold text-sm'>
+                                Specific Concern
+                            </p>
+                            <TextField
+                                placeholder='Interest'
+                                onChange={(e) =>
+                                    setSpecificConcern(e.target.value)
+                                }
+                                fullWidth
+                            />
+                        </div>
                     </section>
                     <button
                         disabled={loader}
