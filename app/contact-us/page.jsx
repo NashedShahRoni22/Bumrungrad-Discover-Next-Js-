@@ -3,6 +3,15 @@ import ContactCardImg from "@/public/assets/Bumrungrad  Hospital_contact_card.pn
 import ContactForm from "./_comp/ContactForm";
 import Image from "next/image";
 
+export const metadata = {
+  title: 'Contact Bumrungrad Hospital for Expert Care and Assistance!',
+  description:
+    'Discover exceptional care and personalized support at Bumrungrad International Hospital. Connect today for world-class healthcare and expert assistance.',
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/contact-us',
+  },
+  charset: 'utf-8',
+};
 
 export default function ContactUs() {
   const ContactCards = [
