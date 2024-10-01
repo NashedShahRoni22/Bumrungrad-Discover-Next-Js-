@@ -114,7 +114,11 @@ const ChildPackageDetails = ({ params }) => {
                 sendEmailsResponse?.messageId &&
                 sendEmailsResponse2?.messageId
             ) {
-                toast.success("Package booking placed! Our support team will contact you soon.");
+                toast.success("We have received your request. Our representative will reach you shortly!", {
+                    position: "top-center",
+                    style: { borderRadius: "20px" },
+                    duration: 5000,
+                  });
                 router.push("/");
             }
         } else {

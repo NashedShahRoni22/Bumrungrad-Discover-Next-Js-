@@ -57,4 +57,4 @@ export const formatKeysWithRemoveKeys = (obj, keysToRemove) => {
 // const keysToRemove = ['email', 'birtDate', 'phoneNumber'];
 
 // const formattedFields = formatKeys(fields, keysToRemove);
-// console.log(formattedFields);
+

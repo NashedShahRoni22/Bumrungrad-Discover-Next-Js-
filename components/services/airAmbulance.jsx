@@ -49,21 +49,26 @@ const AirAmbulanceForm = () => {
 
             if (data.status == 200) {
                 setLoader(true);
-                const uploadImage = data?.passport_copy ? data?.passport_copy : "No file found"; 
+                const uploadImage = data?.passport_copy
+                    ? data?.passport_copy
+                    : "No file found";
                 setLoader(false);
 
                 setLoader(true);
                 const send_mails = await sendEmails(
                     admin_mails,
                     `Air Ambulance Request`,
-                    comapanyMailBody(formatKeys({
-                        name: `${auth?.firstName} ${auth?.lastName}`,
-                        email: auth?.email,
-                        date: date,
-                        passport_copy: uploadImage,
-                        summary: caseSummary,
-                        description: briflyDiscusion,
-                    }),"Air Ambulance Request"),
+                    comapanyMailBody(
+                        formatKeys({
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            date: date,
+                            passport_copy: uploadImage,
+                            summary: caseSummary,
+                            description: briflyDiscusion,
+                        }),
+                        "Air Ambulance Request",
+                    ),
                 );
                 setLoader(false);
 
@@ -71,21 +76,29 @@ const AirAmbulanceForm = () => {
                 const send_mail_client = await sendEmails(
                     auth?.email,
                     `Air Ambulance Request`,
-                    comapanyMailBody(formatKeys({
-                        name: `${auth?.firstName} ${auth?.lastName}`,
-                        email: auth?.email,
-                        date: date,
-                        passport_copy: uploadImage,
-                        summary: caseSummary,
-                        description: briflyDiscusion,
-                    }),"Air Ambulance Request"),
+                    comapanyMailBody(
+                        formatKeys({
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            date: date,
+                            passport_copy: uploadImage,
+                            summary: caseSummary,
+                            description: briflyDiscusion,
+                        }),
+                        "Air Ambulance Request",
+                    ),
                 );
 
                 setLoader(false);
 
                 if (send_mails?.messageId && send_mail_client?.messageId) {
                     toast.success(
-                        "Air Ambulance request sent! Our support team will contact you soon.",
+                        "We have received your request. Our representative will reach you shortly!",
+                        {
+                            position: "top-center",
+                            style: { borderRadius: "20px" },
+                            duration: 5000,
+                        },
                     );
                     window.location.reload();
                     form.reset();
@@ -161,12 +174,25 @@ const AirAmbulanceForm = () => {
                         !briflyDiscusion
                     }
                     type='submit'
-                    className={`btn_primary ${loader || !date ||
+                    className={`btn_primary ${
+                        loader ||
+                        !date ||
                         !passport ||
                         !caseSummary ||
-                        !briflyDiscusion ? "bg-white text-black border" : "bg-blue text-white"}`}
+                        !briflyDiscusion
+                            ? "bg-white text-black border"
+                            : "bg-blue text-white"
+                    }`}
                 >
-                    { loader ? <Loader className="animate-spin" stroke="black" fill="black" /> : "Submit"}
+                    {loader ? (
+                        <Loader
+                            className='animate-spin'
+                            stroke='black'
+                            fill='black'
+                        />
+                    ) : (
+                        "Submit"
+                    )}
                 </button>
             </form>
         </div>

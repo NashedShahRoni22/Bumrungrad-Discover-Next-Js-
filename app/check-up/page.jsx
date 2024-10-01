@@ -152,7 +152,7 @@ export default function CheckUp() {
             );
 
             const data = await response.json();
-            // console.log("🚀 ~ handaleDataSubmit ~ data:", data)
+
             const _passport = data?.passport ? data?.passport : "No Passport File Provided";
             const _other_doc = data?.other_doc ? data?.other_doc : "No Other File Provided";
 

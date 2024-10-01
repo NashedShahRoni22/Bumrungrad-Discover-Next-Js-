@@ -86,23 +86,9 @@ const OrderMedicine = () => {
             const json_data = await response.json();
 
             if (json_data.status === 200) {
-                toast.success(
-                    "Medicine Order Placed! Our support team will contact you soon.",
-                    {
-                        duration: 3000,
-                        position: "top-center",
-                        style: {
-                            padding: "16px",
-                            color: "green",
-                            border: "1px solid green",
-                        },
-                    },
-                );
-
                 const uploaded_prescription = json_data?.prescription
                     ? json_data?.prescription
                     : "Link not found";
-
 
                 setLoader(true);
                 const send_mail_admin = await sendEmails(
@@ -131,7 +117,14 @@ const OrderMedicine = () => {
                 setLoader(false);
 
                 if (send_mail_admin.messageId && send_mail_client.messageId) {
-                    toast.success("Email sent successfully");
+                    toast.success(
+                        "We have received your request. Our representative will reach you shortly!",
+                        {
+                            position: "top-center",
+                            style: { borderRadius: "20px" },
+                            duration: 5000,
+                        },
+                    );
 
                     navigate.push("/");
                 }

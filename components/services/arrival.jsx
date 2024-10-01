@@ -19,62 +19,98 @@ const Arrival = () => {
         message: "",
         passport: "",
     });
+    const [_passport, setPassport] = useState("");
 
     const handleSubmit = async () => {
         try {
             setLoader(true);
             SetErrors(null);
-            const response_admin = await sendEmails(
-                admin_mails,
-                `Admission on arrival - ${auth?.email}`,
-                comapanyMailBody(
-                    {
-                        name: `${auth?.firstName} ${auth?.lastName}`,
-                        email: auth?.email,
-                        ...formData,
-                    },
-                    "Admission on arrival",
-                ),
-            );
-            setLoader(false);
 
-            // send email on user
+            const _formData = new FormData();
+
+            const fields = {
+                case_summary: formData["case summary"],
+                date: formData["admission date"],
+                message: formData.message,
+                passport: _passport,
+            };
+
+            Object.entries(fields).forEach(([key, value]) =>
+                _formData.append(key, value),
+            );
+
+            // Send POST request
             setLoader(true);
-            const response_sender = await sendEmails(
-                auth?.email,
-                `Admission on arrival`,
-                comapanyMailBody(
-                    {
-                        name: `${auth?.firstName} ${auth?.lastName}`,
-                        email: auth?.email,
-                        ...formData,
-                    },
-                    "Admission on arrival",
-                ),
+            const response = await fetch(
+                "https://api.discoverinternationalmedicalservice.com/api/add/new-admission",
+                {
+                    method: "POST",
+                    body: _formData,
+                },
             );
 
             setLoader(false);
 
-            if (response_sender?.messageId && response_admin?.messageId) {
-                toast.success("You will receive an email 🚑", {
-                    position: "top-center",
-                    style: {
-                        padding: "16px",
-                        border: "1px solid #ccc",
-                        color: "green",
-                    },
-                    duration: 3000,
-                    icon: "👌👌",
-                });
+            const data = await response.json();
 
-                setFormData({
-                    passport: "",
-                    "case summary": "",
-                    "admission date": "",
-                    message: "",
-                });
+            if (data.status == 200) {
+                const _pa = data?.passport ? data?.passport : "No file found";
 
-                window.location.reload();
+                const response_admin = await sendEmails(
+                    admin_mails,
+                    `Admission on arrival - ${auth?.email}`,
+                    comapanyMailBody(
+                        {
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            ...formData,
+                            passport: _pa,
+                        },
+                        "Admission on arrival",
+                    ),
+                );
+
+                setLoader(false);
+
+                // send email on user
+                setLoader(true);
+                const response_sender = await sendEmails(
+                    auth?.email,
+                    `Admission on arrival`,
+                    comapanyMailBody(
+                        {
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            ...formData,
+                            passport: _pa,
+                        },
+                        "Admission on arrival",
+                    ),
+                );
+
+                setLoader(false);
+
+                if (response_sender?.messageId && response_admin?.messageId) {
+                    toast.success(
+                        "We have received your request. Our representative will reach you shortly!",
+                        {
+                            position: "top-center",
+                            style: { borderRadius: "20px" },
+                            duration: 5000,
+                        },
+                    );
+
+                    setFormData({
+                        passport: "",
+                        "case summary": "",
+                        "admission date": "",
+                        message: "",
+                    });
+
+                    window.location.reload();
+                } else {
+                    toast.error("email not sent. Submission failed");
+                }
             } else {
                 toast.error("Submission failed");
             }
@@ -83,23 +119,37 @@ const Arrival = () => {
     return (
         <div>
             <div className='flex flex-col gap-4'>
-                {/* <div>
+                <div className="flex flex-col gap-2.5">
+                    <label htmlFor='datte' className="">Date</label>
                     <TextField
-                        id='outlined-multiline-flexible'
-                        label='Passport Copy'
-                        value={formData["passport copy"]}
-                        placeholder='Passport Copy'
+                        id='outlined-multiline-flexible 2'
+                        // label='Admission Date'
+                        value={formData["admission date"]}
+                        placeholder='Admission Date'
                         fullWidth
                         required
+                        type='date'
                         onChange={(e) =>
                             setFormData({
                                 ...formData,
-                                "passport copy": e.target.value,
+                                "admission date": e.target.value,
                             })
                         }
                     />
-                   
-                </div> */}
+                </div>
+                <div className="flex flex-col gap-2.5">
+                    <label htmlFor='document' className="">Passport</label>
+                    <TextField
+                        id='outlined-multiline-flexible 3'
+                        placeholder='Document'
+                        fullWidth
+                        type='file'
+                        onChange={(e) => {
+
+                            setPassport(e.target.files[0]);
+                        }}
+                    />
+                </div>
                 <div>
                     <TextField
                         id='outlined-multiline-flexible 1'
@@ -134,44 +184,6 @@ const Arrival = () => {
                         }
                     />
                 </div>
-                <div>
-                    <label htmlFor='datte'>Date</label>
-                    <TextField
-                        id='outlined-multiline-flexible 2'
-                        // label='Admission Date'
-                        value={formData["admission date"]}
-                        placeholder='Admission Date'
-                        fullWidth
-                        required
-                        type='date'
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                "admission date": e.target.value,
-                            })
-                        }
-                    />
-                </div>
-
-                <div>
-                    <label htmlFor='document'>Passport</label>
-                    <TextField
-                        id='outlined-multiline-flexible 3'
-                        // label='Document'
-                        value={formData["passport"]}
-                        placeholder='Document'
-                        fullWidth
-                        type='file'
-                        onChange={(e) =>
-                            setFormData({
-                                ...formData,
-                                passport: e.target.value,
-                            })
-                        }
-                    />
-                </div>
-
-              
 
                 <button
                     type='button'

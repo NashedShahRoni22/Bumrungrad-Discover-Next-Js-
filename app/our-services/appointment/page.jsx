@@ -277,7 +277,7 @@ export default function Appointment() {
       setLoader(false);
 
       const data = await apiResponse.json();
-      console.log("🚀 ~ handleBookAppointment ~ data:", data)
+   
 
       if (data.status === 200) {
         // toast.success("Please check your email or spam box!");
@@ -340,7 +340,7 @@ export default function Appointment() {
       setLoader(false);
 
       if (emailResponse.messageId && responseClient.messageId) {
-        toast.success("Book Appointment successfully, Mail has been sent", {
+        toast.success("We have received your request. Our representative will reach you shortly!", {
           position: "top-center",
           style: { borderRadius: "20px" },
           duration: 5000,

@@ -14,7 +14,7 @@ import Loader from "../ui/loader";
 import { formatKeys } from "@/helpers/objectKeyFormat";
 
 const AirtTcket = () => {
-    const {auth} = useAuth()
+    const { auth } = useAuth();
     const [loader, setLoader] = useState();
     //Input field states
     const [flydate, setFlydate] = useState("");
@@ -37,10 +37,12 @@ const AirtTcket = () => {
         };
 
         // Optional: Log formData for debugging purposes
-        Object.entries(fields).forEach(([key, value]) => formData.append(key, value));
+        Object.entries(fields).forEach(([key, value]) =>
+            formData.append(key, value),
+        );
 
         try {
-          setLoader(true);
+            setLoader(true);
             const response = await fetch(
                 "https://api.discoverinternationalmedicalservice.com/api/add/air/ticket",
                 {
@@ -54,45 +56,58 @@ const AirtTcket = () => {
             setLoader(false);
 
             if (response.ok && data.status === 200) {
-                
                 setLoader(true);
-                const docImage = data?.doc  ?  data?.doc : "No doc found";
+                const docImage = data?.doc ? data?.doc : "No doc found";
                 setLoader(false);
 
                 setLoader(true);
                 const sendMail = await sendEmails(
                     admin_mails,
-                   `Air Ticket - ${auth?.email}`,
-                    comapanyMailBody(formatKeys({name: `${auth?.firstName} ${auth?.lastName}`, email: auth?.email, ...fields, doc: docImage}),"Air Ticket Request"),
+                    `Air Ticket - ${auth?.email}`,
+                    comapanyMailBody(
+                        formatKeys({
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            ...fields,
+                            doc: docImage,
+                        }),
+                        "Air Ticket Request",
+                    ),
                 );
                 setLoader(false);
 
                 setLoader(true);
                 const sendMail2 = await sendEmails(
-                  auth?.email,
-                  `Air Ticket`,
-                  comapanyMailBody(formatKeys({name: `${auth?.firstName} ${auth?.lastName}`, email: auth?.email, ...fields, doc: docImage}),"Air Ticket Request"),
-                )
+                    auth?.email,
+                    `Air Ticket`,
+                    comapanyMailBody(
+                        formatKeys({
+                            name: `${auth?.firstName} ${auth?.lastName}`,
+                            email: auth?.email,
+                            ...fields,
+                            doc: docImage,
+                        }),
+                        "Air Ticket Request",
+                    ),
+                );
                 setLoader(false);
 
                 if (sendMail?.messageId && sendMail2?.messageId) {
-                    toast.success("Mail has been sent", {
-                        position: "top-center",
-                        style: {
-                            padding: "20px",
-                            border: "1px solid #ccc",
-                            color: "green",
+                    toast.success(
+                        "We have received your request. Our representative will reach you shortly!",
+                        {
+                            position: "top-center",
+                            style: { borderRadius: "20px" },
+                            duration: 5000,
                         },
-                        duration: 3000,
-                        icon: "👌👌",
-                    });
+                    );
                     setTimeout(() => {
                         router.refresh(); // Optional: refresh to ensure the latest state
                         window.location.reload(); // Reload page after successful submission
                     }, 1500);
                 }
             } else {
-               toast.error("Submission failed");
+                toast.error("Submission failed");
             }
         } catch (error) {
             setLoader(false);
@@ -194,9 +209,21 @@ const AirtTcket = () => {
                         <button
                             disabled={loader}
                             type='submit'
-                            className={`btn_primary ${loader ? "bg-white text-black border" : "bg-blue text-white"}`}
+                            className={`btn_primary ${
+                                loader
+                                    ? "bg-white text-black border"
+                                    : "bg-blue text-white"
+                            }`}
                         >
-                            { loader ? <Loader className="animate-spin" stroke="black" fill="black" /> : "Submit"}
+                            {loader ? (
+                                <Loader
+                                    className='animate-spin'
+                                    stroke='black'
+                                    fill='black'
+                                />
+                            ) : (
+                                "Submit"
+                            )}
                         </button>
                     </div>
                 </div>

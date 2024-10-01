@@ -13,12 +13,11 @@ import {
     Select,
     TextField,
 } from "@mui/material";
-import { TbLoaderQuarter } from "react-icons/tb";
 import toast from "react-hot-toast";
 import { sendEmails } from "@/helpers/mail/sendMail";
 import { admin_mails } from "@/constant";
 import { natioNalities } from "@/public/data/country";
-import { mailBody, userMailBody } from "@/helpers/mail/mailbody";
+import {  userMailBody } from "@/helpers/mail/mailbody";
 import Loader from "@/components/ui/loader";
 
 export default function Faq() {
@@ -66,16 +65,11 @@ export default function Faq() {
             )
             setLoading(false);
             if(response?.messageId){
-                toast.success("Email sent successfully 🚑", {
+                toast.success("We have received your request. Our representative will reach you shortly!", {
                     position: "top-center",
-                    style: {
-                        padding: "16px",
-                        border: "1px solid #ccc",
-                        color: "green",
-                    },
-                    duration: 3000,
-                    icon: "🚑",
-                });
+                    style: { borderRadius: "20px" },
+                    duration: 5000,
+                  });
     
                 setFormData({
                     name: "",
@@ -113,36 +107,54 @@ export default function Faq() {
 
     const faq = [
         {
-            question: "What is Discover International Medical Service (DIMS)?",
-            answer: "Discover International Medical Service (DIMS) is a medical assistance company and medical value travel facilitator. We specialize in connecting patients with Bumrungrad International Hospital, simplifying their healthcare journey through expert guidance, medical appointments, and ensuring high-quality care at the best value.",
+            question: "How do I make an appointment at Bumrungrad International Hospital?",
+            answer: "As a Medical Tourism Facilitator, we can help you book an appointment at Bumrungrad International Hospital. Simply contact us, and we’ll handle all the scheduling for you, ensuring that you receive the care you need at a convenient time. Alternatively, appointments can be booked directly through the hospital's website or by contacting their International Patient Services.",
         },
         {
-            question:
-                "How do I book an appointment with the Bumrungrad local office?",
-            answer: "You can book an appointment with Bumrungrad Hospital Bangladesh office through DIMS. Contact us via phone, email, or our website, and provide your medical needs. We'll coordinate with the local office to set up your appointment and manage all necessary arrangements.",
+            question: "Where is Bumrungrad Hospital located and what is nearby?",
+            answer: "Bumrungrad International Hospital is located at 33 Sukhumvit 3 (Soi Nana Nua), Wattana, Bangkok, Thailand. It’s situated in a central area of Bangkok, close to luxury hotels, restaurants, shopping malls, and other services that are convenient for international patients and their families.",
         },
         {
-            question:
-                "What is the cost of my treatment at Bumrungrad International Hospital?",
-            answer: "The cost of treatment at Bumrungrad International Hospital varies based on your medical needs and procedures. Contact DIMS for a detailed cost breakdown, as we collaborate with the hospital’s billing department to ensure transparency before your treatment.",
+            question: "What is the cost of my treatment at Bumrungrad International Hospital?",
+            answer: "The cost of your treatment will depend on the medical services you require. As facilitators, we work closely with Bumrungrad to provide a detailed cost estimate based on your medical needs. Contact us, and we’ll arrange a personalized treatment plan with a transparent cost estimate.",
         },
         {
-            question:
-                "How do I pay for my treatment at Bumrungrad International Hospital if I do not have International Health insurance?",
-            answer: "If you don’t have International Health insurance, DIMS will assist you with payment options such as credit/debit cards, bank transfers, or cash. We ensure that the financial processes are handled smoothly and according to your preferences.",
+            question: "What is the International Referral Office and what kind of services do they provide?",
+            answer: "The International Referral Office at Bumrungrad Hospital supports international patients by coordinating appointments, treatments, and travel logistics. They assist with medical inquiries, communication between doctors, and provide follow-up support. As your facilitator, we collaborate with this office to ensure a smooth experience throughout your treatment journey.",
         },
         {
-            question:
-                "How do I get in contact with a Bumrungrad Support Specialist?",
-            answer: "To reach a Bumrungrad Support Specialist, contact DIMS directly. We will connect you with the appropriate specialist at Bumrungrad International Hospital, whether through phone, email, or our online contact form.",
+            question: "Will there be someone at Bumrungrad International Hospital who speaks my language?",
+            answer: "Yes, Bumrungrad has over 200 professional interpreters covering a wide range of languages. You will be assisted in your preferred language throughout your healthcare journey to ensure clear communication at every step.",
+        },
+        {
+            question: "What are the accommodation options near Bumrungrad International Hospital?",
+            answer: "There are several accommodation options near the hospital, including hotels and serviced apartments. As your Medical Tourism Facilitator, we can help arrange accommodation to suit your needs, ensuring you and your family are comfortable during your stay.",
+        },
+        {
+            question: "How do I pay for my treatment at Bumrungrad International Hospital if I do not have International Health Insurance?",
+            answer: "If you don’t have international health insurance, payment options include cash, major credit cards, and bank transfers. Bumrungrad also offers financial counseling, and we can assist you in exploring the best payment methods to suit your situation.",
+        },
+        {
+            question: "Does Bumrungrad International Hospital provide transportation services for international patients?",
+            answer: "Yes, the hospital provides airport pickup services and local transportation for international patients. As your facilitator, we can coordinate these services for you, ensuring a smooth transition from the airport to your accommodation and the hospital.",
+        },
+        {
+            question: "How do I obtain a visa for medical treatment at Bumrungrad International Hospital?",
+            answer: "We work directly with Bumrungrad to provide a visa support letter for patients traveling for medical treatment. Our team will guide you through the visa application process and help ensure all necessary documents are prepared.",
+        },
+        {
+            question: "How do I get in contact with a Bumrungrad Support Specialist?",
+            answer: "You can either reach out directly to Bumrungrad’s Support Specialists via their website or phone, or you can contact us, and we will coordinate all communications on your behalf to ensure you receive prompt assistance.",
         },
     ];
+     
+    
 
     return (
         <div className='mx-5 my-16 md:my-32 md:container md:mx-auto flex flex-col md:flex-row gap-8 md:gap-16'>
             <form
-                action=''
-                className='md:w-1/2 flex flex-col gap-5 shadow p-8 max-sm:p-3 rounded'
+               
+                className='md:w-1/2 flex flex-col gap-5 shadow p-8 max-sm:p-3 rounded max-h-fit'
             >
                 <p className='text-xl md:text-2xl font-semibold text-blue'>
                     Get a second medical opinion at Bumrungrad International

@@ -107,9 +107,9 @@ const VisaProcessing = () => {
                 ? data?.medicalReport1
                 : "Link not provided";
             const medicalReport2Upload = medicalReport2
-                ?data?.medicalReport2
+                ? data?.medicalReport2
                 : "Link not provided";
-            const invitationLetterUpload = invitationLetter 
+            const invitationLetterUpload = invitationLetter
                 ? data?.invitationLetter
                 : "Link not provided";
             setLoader(false);
@@ -126,7 +126,7 @@ const VisaProcessing = () => {
                         passport: passportUpload,
                         medicalReport1: medicalReport1Upload,
                         medicalReport2: medicalReport2Upload,
-                        invitationLetter: invitationLetterUpload
+                        invitationLetter: invitationLetterUpload,
                     }),
                     "Visa Processing",
                 ),
@@ -144,7 +144,7 @@ const VisaProcessing = () => {
                         passport: passportUpload,
                         medicalReport1: medicalReport1Upload,
                         medicalReport2: medicalReport2Upload,
-                        invitationLetter: invitationLetterUpload
+                        invitationLetter: invitationLetterUpload,
                     }),
                     "Visa Processing",
                 ),
@@ -152,7 +152,14 @@ const VisaProcessing = () => {
             setLoader(false);
             // show message to user
             if (mailRes.messageId && mailRes2.messageId) {
-                toast.success("Request Sent. We will get back to you soon");
+                toast.success(
+                    "We have received your request. Our representative will reach you shortly!",
+                    {
+                        position: "top-center",
+                        style: { borderRadius: "20px" },
+                        duration: 5000,
+                    },
+                );
                 navigate.push("/");
             } else {
                 setLoader(false);
@@ -503,7 +510,15 @@ const VisaProcessing = () => {
                                     (passport === "" && driveLink1 === "")
                                 }
                             >
-                                { loader ? <Loader className="animate-spin" stroke={loader ? "black" : "white"} fill={loader ? "black" : "white"} /> : "Book Visa"}
+                                {loader ? (
+                                    <Loader
+                                        className='animate-spin'
+                                        stroke={loader ? "black" : "white"}
+                                        fill={loader ? "black" : "white"}
+                                    />
+                                ) : (
+                                    "Book Visa"
+                                )}
                             </button>
                         </div>
                     </section>

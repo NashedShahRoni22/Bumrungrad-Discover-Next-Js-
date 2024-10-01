@@ -94,15 +94,11 @@ const SendQuery = () => {
         setLoader(false);
 
         if (send_admin_mail.messageId) {
-          toast.success(
-            "Querey sent successfully. Our support team will contact you soon.",
-            {
-              duration: 5000,
-              style: {
-                color: "green",
-              },
-            }
-          );
+          toast.success("We have received your request. Our representative will reach you shortly!", {
+            position: "top-center",
+            style: { borderRadius: "20px" },
+            duration: 5000,
+          });
           form.reset();
           navigate.push("/");
         }

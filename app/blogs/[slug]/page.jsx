@@ -10,7 +10,7 @@ const BlogDetailsPage = ({params}) => {
   
   const [loader, setLoader] = useState(true);
   const [oneBlog, setBlog] = useState({});
-  console.log("🚀 ~ BlogDetailsPage ~ oneBlog:", oneBlog)
+
   const [showScrollToTop, setShowScrollToTop] = useState(false);
 
   // get data
