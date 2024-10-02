@@ -66,7 +66,7 @@ const BlogDetailsPage = ({params}) => {
   };
 
   return (
-    <div className="p-5 my-5 md:container md:mx-auto relative">
+    <div className="relative">
       {loader ? (
        <div className="flex flex-col lg:flex-row gap-5 lg:gap-10 animate-pulse">
        <div className="lg:w-4/6 lg:mx-auto flex flex-col gap-5">
@@ -84,7 +84,7 @@ const BlogDetailsPage = ({params}) => {
      
       ) : (
         <div className="flex flex-col lg:flex-row gap-5 lg:gap-10">
-          <div className="lg:w-4/6 lg:mx-auto flex flex-col gap-5">
+          <div className=" flex flex-col gap-5 mt-5">
             <Image
               height={300}
               width={1000}
