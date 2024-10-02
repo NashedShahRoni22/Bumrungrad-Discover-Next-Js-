@@ -1,4 +1,11 @@
-"use client";
+export const metadata = {
+  title: 'Bumrungrad Hospital: Unveiling Our Mission and Core Values',
+  description: "Discover Bumrungrad International Hospital's mission and values, guiding a commitment to excellence in patient care. Your well-being is our top priority.",
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/about-vision-and-mission',
+  },
+  charset: 'utf-8',
+};
 
 import React from "react";
 import missionVissionimg from "@/public/assets/about_bumrungrad/PatientandStaffSafetyStatement.jpg";

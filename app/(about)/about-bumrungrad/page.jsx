@@ -1,4 +1,11 @@
-"use client";
+export const metadata = {
+  title: 'Learn About Bumrungrad Hospital: Excellence in Healthcare',
+  description: "Explore Bumrungrad International Hospital's excellence in healthcare. Discover cutting-edge services and compassionate care for your well-being.",
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/about-bumrungrad',
+  },
+  charset: 'utf-8',
+};
 
 import React from "react";
 import careimg from "@/public/assets/about_bumrungrad/bumrungrad_owned.png";

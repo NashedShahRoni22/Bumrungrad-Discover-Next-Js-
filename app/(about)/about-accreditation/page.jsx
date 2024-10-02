@@ -1,4 +1,11 @@
-'use client';
+export const metadata = {
+  title: 'Bumrungrad Hospital: Explore The Accreditation & Awards',
+  description: "Discover Bumrungrad International Hospital's Accolades. Elevate your health journey with excellence at our hospital. Explore now! #BumrungradHospital",
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/about-accreditation',
+  },
+  charset: 'utf-8',
+};
 
 import React from "react";
 import Link from "next/link";
