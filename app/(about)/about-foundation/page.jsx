@@ -1,5 +1,11 @@
-
-'use client'
+export const metadata = {
+  title: 'Bumrungrad Foundation: Support Health, Donate Now!',
+  description: 'Elevate healthcare at Bumrungrad International Hospital. Empower lives through your donation. Join us in making a difference. Donate now!',
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/about-foundation',
+  },
+  charset: 'utf-8',
+};
 
 import React from "react";
 import qrimage from "@/public/assets/about_bumrungrad/Bumrungrad  Hospital_QR_bumrungrad_foundation-(3).png";

@@ -1,3 +1,13 @@
+export const metadata = {
+  title: 'Bumrungrad Hospital: Fact Sheet & Services | Your Health Journey',
+  description: "Discover Bumrungrad International Hospital's Services & Facts for exceptional care. Start your health journey with our comprehensive offerings.",
+  alternates: {
+    canonical: 'https://discoverinternationalmedicalservice.com/about-factsheet',
+  },
+  charset: 'utf-8',
+};
+
+
 import React from "react";
 import buildingimg from "@/public/assets/about_bumrungrad/FactSheet/Main Hospital Facility & services.png";
 import clinicimg from "@/public/assets/about_bumrungrad/FactSheet/Outpatient Clinic Facility & Services.png";
