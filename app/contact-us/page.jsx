@@ -4,13 +4,9 @@ import ContactForm from "./_comp/ContactForm";
 import Image from "next/image";
 
 export const metadata = {
-  title: 'Contact Bumrungrad Hospital for Expert Care and Assistance!',
+  title: "Contact Us Today | Bumrungrad International Support",
   description:
-    'Discover exceptional care and personalized support at Bumrungrad International Hospital. Connect today for world-class healthcare and expert assistance.',
-  alternates: {
-    canonical: 'https://discoverinternationalmedicalservice.com/contact-us',
-  },
-  charset: 'utf-8',
+    "Need assistance? Contact Bumrungrad International for expert support and answers to all your healthcare questions.",
 };
 
 export default function ContactUs() {
@@ -57,59 +53,58 @@ export default function ContactUs() {
     },
   ];
   return (
-    <div className='md:container mx-auto p-5 md:p-10 my-5 md:my-10'>
+    <div className="md:container mx-auto p-5 md:p-10 my-5 md:my-10">
       <ContactForm />
-      <h2 className='capitalize text-xl md:text-2xl lg:text-3xl font-bold text-blue'>
+      <h2 className="capitalize text-xl md:text-2xl lg:text-3xl font-bold text-blue">
         Locate us
       </h2>
-      <div className='grid grid-cols-1 lg:grid-cols-2 gap-8 my-10'>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 my-10">
         {ContactCards.map((cc, i) => (
           <div
             key={i}
-            className='group flex flex-col md:flex-row shadow-xl rounded items-center justify-between gap-8 md:gap-0'
+            className="group flex flex-col md:flex-row shadow-xl rounded items-center justify-between gap-8 md:gap-0"
           >
-            <div className='p-5 h-full w-full md:w-1/2 relative flex flex-col items-center gap-4'>
+            <div className="p-5 h-full w-full md:w-1/2 relative flex flex-col items-center gap-4">
               <Image
-              height={150}
+                height={150}
                 width={150}
-
                 src={ContactCardImg}
-                alt='Bumrungrad International Hospital'
-                effect='blur'
-                className='h-[150px] w-[150px]'
+                alt="Bumrungrad International Hospital"
+                effect="blur"
+                className="h-[150px] w-[150px]"
               />
-              <div className='flex flex-col'>
-                <h5 className='text-center font-semibold text-xl'>
+              <div className="flex flex-col">
+                <h5 className="text-center font-semibold text-xl">
                   {cc.office}
                 </h5>
-                <div className='absolute top-0 left-0 bg-black/90 h-full w-full hidden group-hover:flex flex-col items-center justify-center rounded md:rounded-r-none text-white duration-300 ease-linear'>
-                  <h5 className='text-center font-semibold text-lg'>
+                <div className="absolute top-0 left-0 bg-black/90 h-full w-full hidden group-hover:flex flex-col items-center justify-center rounded md:rounded-r-none text-white duration-300 ease-linear">
+                  <h5 className="text-center font-semibold text-lg">
                     {cc.office}
                   </h5>
-                  <p className='text-center'>{cc.building}</p>
-                  <p className='text-center'>{cc.floor}</p>
-                  <p className='text-center'>{cc.house}</p>
-                  <p className='text-center'>{cc.city}</p>
-                  <p className='text-center'>{cc.phone1}</p>
-                  <p className='text-center'>{cc.phone2}</p>
+                  <p className="text-center">{cc.building}</p>
+                  <p className="text-center">{cc.floor}</p>
+                  <p className="text-center">{cc.house}</p>
+                  <p className="text-center">{cc.city}</p>
+                  <p className="text-center">{cc.phone1}</p>
+                  <p className="text-center">{cc.phone2}</p>
                 </div>
               </div>
             </div>
-            <div className='hidden md:block md:w-1/2 md:h-full'>
+            <div className="hidden md:block md:w-1/2 md:h-full">
               <iframe
                 src={cc.map}
                 title={cc.map}
-                width='100%'
-                height='100%'
+                width="100%"
+                height="100%"
                 style={{ border: 0 }}
-                allowFullScreen=''
-                loading='lazy'
-                referrerPolicy='no-referrer-when-downgrade'
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
           </div>
         ))}
       </div>
     </div>
-  )
+  );
 }
