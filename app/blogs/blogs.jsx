@@ -64,14 +64,12 @@ const AllBlogs = () => {
                     }`,
                   }}
                 />
-                {d.blogDescription.length > 300 && (
-                  <Link
+                <Link
                     href={`/blogs/${d?.slug}`}
                     className="px-4 py-2 bg-blue text-white shadow rounded text-sm"
                   >
                     Read More
                   </Link>
-                )}
               </div>
             </div>
           ))}
