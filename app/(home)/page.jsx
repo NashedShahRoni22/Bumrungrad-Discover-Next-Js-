@@ -1,7 +1,6 @@
 import Head from "next/head";
 import ClinicCenters from "./_comp/clinicalCenter";
 import Disclaimer from "./_comp/disclaimer";
-import HomeContact from "./_comp/homeContact";
 import JourneyBetter from "./_comp/journeyBetter";
 import Landing from "./_comp/landing";
 import MediExpress from "./_comp/mediExpress";
@@ -18,37 +17,47 @@ import BookingModal from "@/components/services/main/bookingModal";
 import SpecificOffer from "./_comp/specificOffer";
 import BumrungradAccrediation from "./_comp/bumrungradAccrediation";
 
+export const metadata = {
+    name: "google-site-verification",
+    content: "PU4nfwAVdJydAS9wNWWC49A3jXjM5wUP1hYxciG43hQ",
+};
+
 export default function Home() {
-  return (
-    <>
-      <Head>
-        <title>Bumrungrad Int. Hospital Referral Office for Bangladeshi Patient</title>
-        {/* <meta name="description" content="Your page description here." /> */}
-        {/* Add other meta tags like keywords, author, etc. if needed */}
-      </Head>
-      <main>
-        <Landing />
-        <Disclaimer />
-        <JourneyBetter />
-        <MediExpress />
-        <BookingModal />
-        <ClinicCenters />
-        <SpecificOffer/>
-        <RightHealthcare />
-        {/* <HomePackages /> */}
-        <Packages />
-        <OnlineConsultation />
-        <WhyUs />
-        <BumrungradAccrediation/>
-        <Testimonial/>
-        <News />
-        <InsurancePartners/>
-        <Faq/>
-        {/* <HomeContact /> */}
-        <div className="fixed bottom-0 md:bottom-2 min-w-full z-50">
-          <MiddleBar />
-        </div>
-      </main>
-    </>
-  );
+    return (
+        <>
+            <Head>
+                <meta
+                    name='google-site-verification'
+                    content='PU4nfwAVdJydAS9wNWWC49A3jXjM5wUP1hYxciG43hQ'
+                />
+                <title>
+                    Bumrungrad Int. Hospital Referral Office for Bangladeshi
+                    Patient
+                </title>
+            </Head>
+            <main>
+                <Landing />
+                <Disclaimer />
+                <JourneyBetter />
+                <MediExpress />
+                <BookingModal />
+                <ClinicCenters />
+                <SpecificOffer />
+                <RightHealthcare />
+                {/* <HomePackages /> */}
+                <Packages />
+                <OnlineConsultation />
+                <WhyUs />
+                <BumrungradAccrediation />
+                <Testimonial />
+                <News />
+                <InsurancePartners />
+                <Faq />
+                {/* <HomeContact /> */}
+                <div className='fixed bottom-0 md:bottom-2 min-w-full z-50'>
+                    <MiddleBar />
+                </div>
+            </main>
+        </>
+    );
 }
