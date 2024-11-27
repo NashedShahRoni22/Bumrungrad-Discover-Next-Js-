@@ -44,8 +44,8 @@ export default function Home() {
                 <ClinicCenters />
                 <SpecificOffer />
                 <RightHealthcare />
-                {/* <HomePackages /> */}
                 <Packages />
+                
                 <OnlineConsultation />
                 <WhyUs />
                 <BumrungradAccrediation />
@@ -53,7 +53,6 @@ export default function Home() {
                 <News />
                 <InsurancePartners />
                 <Faq />
-                {/* <HomeContact /> */}
                 <div className='fixed bottom-0 md:bottom-2 min-w-full z-50'>
                     <MiddleBar />
                 </div>

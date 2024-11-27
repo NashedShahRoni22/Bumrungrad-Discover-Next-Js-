@@ -237,7 +237,7 @@ const cardLength = path === '/packages' ? 15 : 4
             ></path>
           </svg>
         </button>
-      </div> : null
+      </div> : ''
      }
     </section>
   )
