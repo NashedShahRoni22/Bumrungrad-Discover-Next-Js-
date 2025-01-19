@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 import useAuth from "@/helpers/hooks/useAuth";
 import Link from "next/link";
 
-export default function page() {
+export default function Page() {
   const { auth } = useAuth();
   const router = useRouter();
   const services = [
