@@ -24,6 +24,7 @@ const corporates = [
   { name: "About Bumrungrad", link: "/about-bumrungrad" },
   { name: "Send Inquiry", link: "/send-query" },
   { name: "Contact", link: "/contact-us" }, 
+  { name: "Dhaka Offices", link: "/dhaka-offices" }, 
 ];
 const blognews = [
   { name: 'Blogs', link: '/blogs' },
