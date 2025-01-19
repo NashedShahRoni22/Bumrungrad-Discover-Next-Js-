@@ -6,13 +6,16 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye'
 const SinglePackage = ({p}) => {
   return (
     <div className="flex flex-col justify-between  gap-2 shadow">
-      <Image
-        height={210}
-        width={400}
-        src={p?.cover_photo}
-        effect="blur"
-        alt="Bumrungrad International Hospital"
-      />
+      {
+        p?.cover_photo ? <Image
+          height={210}
+          width={400}
+          src={p?.cover_photo}
+          effect="blur"
+          alt="Bumrungrad International Hospital"
+        />
+        : <div className="w-full h-[210px] bg-gray-200"></div>
+      }
       <div className="p-2.5 h-[210px]">
         <p className="font-semibold text-blue md:text-xl">{p?.title}</p>
         <p className="pb-5 mt-2.5">{p?.description.slice(0, 160)} ... </p>
