@@ -423,7 +423,7 @@ export default function FindDoctor() {
       query?.day ||
       query?.schedule ||
       query?.gender ? (
-        <div className="mx-5 md:container md:mx-auto p-5">
+        <div className="mx-5 mt-10 md:container md:mx-auto">
           <p className="text-lg md:text-xl font-semibold">Filters:</p>
           <div className="flex flex-wrap gap-1 mt-5">
             {docName && (
@@ -563,24 +563,26 @@ export default function FindDoctor() {
         </div>
       )}
 
-      <div className="flex justify-center items-center gap-2 md:gap-4 mt-8 ">
-        {showData !== 15 && (
-          <button
-            onClick={handalelessData}
-            className="border border-blue bg-blue hover:bg-white hover:text-blue rounded-full text-sm md:text-base text-white px-2 md:px-6 py-2"
-          >
-            View Less
-          </button>
-        )}
+      {doctors.length > 15 && (
+        <div className="flex justify-center items-center gap-2 md:gap-4 mt-8 ">
+          {showData !== 15 && (
+            <button
+              onClick={handalelessData}
+              className="border border-blue bg-blue hover:bg-white hover:text-blue rounded-full text-sm md:text-base text-white px-2 md:px-6 py-2"
+            >
+              View Less
+            </button>
+          )}
 
-        <button
-          onClick={handaleAddData}
-          className="border border-blue bg-blue hover:bg-white hover:text-blue rounded-full text-sm md:text-base text-white   px-2 md:px-6 py-2"
-          disabled={showData === doctors?.length}
-        >
-          View More
-        </button>
-      </div>
+          <button
+            onClick={handaleAddData}
+            className="border border-blue bg-blue hover:bg-white hover:text-blue rounded-full text-sm md:text-base text-white   px-2 md:px-6 py-2"
+            disabled={showData === doctors?.length}
+          >
+            View More
+          </button>
+        </div>
+      )}
     </section>
   );
 }

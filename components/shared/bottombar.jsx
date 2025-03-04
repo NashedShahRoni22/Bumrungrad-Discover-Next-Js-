@@ -29,7 +29,7 @@ const corporates = [
 const blognews = [
   { name: 'Blogs', link: '/blogs' },
   { name: 'News', link: '/news' },
-  { name: 'Treatments', link: '/treatments' },
+  // { name: 'Treatments', link: '/treatments' },
 ]
 
 export default function BottomBar() {

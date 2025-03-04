@@ -8,14 +8,23 @@ import { CardLoader } from "@/components/ui/cardload"; // Make sure this is corr
 const AllBlogs = () => {
   const [allBlogData, setAllBlogData] = useState([]);
   const [loader, setLoader] = useState(true); // Default to loading state
+  const [currentPage, setCurrentPage] = useState(1); // Current page state
+  const [totalPages, setTotalPages] = useState(1); // Total pages state
+  const [nextPageUrl, setNextPageUrl] = useState(null); // URL for next page
+  const [prevPageUrl, setPrevPageUrl] = useState(null); // URL for previous page
 
-  useEffect(() => {
-    fetch("https://api.discoverinternationalmedicalservice.com/api/get/blogs")
+  // Fetch blog data when component mounts or page changes
+  const fetchBlogs = (page) => {
+    setLoader(true); // Set loader to true when fetching new data
+    fetch(`https://api.discoverinternationalmedicalservice.com/api/get-all-blogs?page=${page}`)
       .then((res) => res.json())
-      .then((data) => {
-        if (data.status === 200) {
-          setAllBlogData(data?.data);
-        } else {
+      .then((resData) => {
+        if (resData.status === 200) {
+          setAllBlogData(resData?.data?.data);
+          setCurrentPage(resData?.data?.current_page);
+          setTotalPages(Math.ceil(resData.data?.total / resData.data?.per_page)); // Calculate total pages
+          setNextPageUrl(resData?.data?.next_page_url);
+          setPrevPageUrl(resData?.data?.prev_page_url);
         }
         setLoader(false); // Stop loader regardless of response
       })
@@ -23,7 +32,12 @@ const AllBlogs = () => {
         console.error("Error fetching blog data:", error);
         setLoader(false);
       });
-  }, []);
+  };
+
+  // Fetch initial data when the component mounts
+  useEffect(() => {
+    fetchBlogs(currentPage);
+  }, [currentPage]);
 
   return (
     <div className="p-5 md:p-10 md:container md:mx-auto">
@@ -53,9 +67,7 @@ const AllBlogs = () => {
                 className="w-full h-[200px] object-cover"
               />
               <div className="p-5">
-                <h5 className="font-semibold text-blue text-lg">
-                  {d.blogTitle}
-                </h5>
+                <h5 className="font-semibold text-blue text-lg">{d.blogTitle}</h5>
                 <div
                   className="text-sm lg:text-base mb-5"
                   dangerouslySetInnerHTML={{
@@ -65,16 +77,39 @@ const AllBlogs = () => {
                   }}
                 />
                 <Link
-                    href={`/blogs/${d?.slug}`}
-                    className="px-4 py-2 bg-blue text-white shadow rounded text-sm"
-                  >
-                    Read More
-                  </Link>
+                  href={`/blogs/${d?.slug}`}
+                  className="px-4 py-2 bg-blue text-white shadow rounded text-sm"
+                >
+                  Read More
+                </Link>
               </div>
             </div>
           ))}
         </div>
       )}
+
+      {/* Pagination controls */}
+      <div className="flex justify-center items-center space-x-4 mt-16">
+        {prevPageUrl && (
+          <button
+            onClick={() => setCurrentPage(currentPage - 1)}
+            className="px-4 py-2 bg-blue text-white rounded"
+          >
+            Prev
+          </button>
+        )}
+        <span className="text-sm">
+          Page {currentPage} of {totalPages}
+        </span>
+        {nextPageUrl && (
+          <button
+            onClick={() => setCurrentPage(currentPage + 1)}
+            className="px-4 py-2 bg-blue text-white rounded"
+          >
+            Next
+          </button>
+        )}
+      </div>
     </div>
   );
 };
