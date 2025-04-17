@@ -6,6 +6,7 @@ import BottomBar from "@/components/shared/bottombar";
 import SideBar from "@/components/shared/sidebar";
 import { Toaster } from "react-hot-toast";
 import GoogleTagManage from "@/components/ui/googleTagManage";
+import SiteTitleManage from "@/components/ui/siteTitleManage";
 // import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,8 +27,13 @@ export default function RootLayout({ children }) {
         name="google-site-verification"
         content="PU4nfwAVdJydAS9wNWWC49A3jXjM5wUP1hYxciG43hQ"
       />
+      <meta
+        name="application-name"
+        content="Bumrungrad International Hospital RO"
+      />
       {/* </Head> */}
       <GoogleTagManage />
+      <SiteTitleManage/>
       <body className={inter.className}>
         <AuthContextProvider>
           <Topbar />

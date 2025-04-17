@@ -131,7 +131,7 @@ export default function DoctorInfo({params}) {
                 )}
 
                 {doctor?.school && (
-                  <li className="text-xl list-disc">{doctor?.school}</li>
+                  <li className="mt-1 list-disc">{doctor?.school}</li>
                 )}
               </div>
               {doctor?.certificates?.length > 0 && (
@@ -141,8 +141,22 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.certificates?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.certificate.split("-")}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {doctor?.trainings?.length > 0 && (
+                <div className="">
+                  <p className="text-xl md:text-2xl text-blue font-semibold">
+                  Trainings:
+                  </p>
+                  <ul className="mt-2.5 md:mt-5">
+                    {doctor?.trainings?.map((dc, i) => (
+                      <li key={i} className="mt-1 list-disc">
+                        {dc?.training}
                       </li>
                     ))}
                   </ul>
@@ -155,7 +169,7 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.interests?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.Interest.split("-")}
                       </li>
                     ))}
@@ -169,7 +183,7 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.experiences?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.experience}
                       </li>
                     ))}
@@ -183,7 +197,7 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.fellowships?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.fellowship}
                       </li>
                     ))}
@@ -197,7 +211,7 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.researches?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.research}
                       </li>
                     ))}
@@ -211,7 +225,7 @@ export default function DoctorInfo({params}) {
                   </p>
                   <ul className="mt-2.5 md:mt-5">
                     {doctor?.article?.map((dc, i) => (
-                      <li key={i} className="text-xl list-disc">
+                      <li key={i} className="mt-1 list-disc">
                         {dc?.article}
                       </li>
                     ))}
